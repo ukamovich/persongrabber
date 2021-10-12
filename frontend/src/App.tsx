@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-
+let backendPort = process.env.REACT_APP_BACKEND_PORT || 3001
 function App() {
   let [name, setName] = useState("")
   let [age, setAge] = useState(-1)
@@ -39,7 +39,7 @@ function App() {
       }
     }
 
-    fetch(`http://localhost:${process.env.REACT_APP_BACKEND_PORT}/graphql`, {
+    fetch(`http://localhost:${backendPort}/graphql`, {
       method: "POST",
       body: JSON.stringify(queryBody),
       headers: {

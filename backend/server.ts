@@ -6,7 +6,7 @@ import path from "path"
 require("dotenv").config({ path: path.resolve(__dirname + "/../frontend/.env")})
 
 const app = express()
-const port = process.env.REACT_APP_BACKEND_PORT
+const port = process.env.REACT_APP_BACKEND_PORT || 3001
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
