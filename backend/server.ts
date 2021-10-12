@@ -4,6 +4,8 @@ import schema from "./graphql/schema/schema"
 import resolvers from "./graphql/resolvers/resolvers"
 import path from "path"
 require("dotenv").config({ path: path.resolve(__dirname + "/../frontend/.env")})
+import mongoose from "mongoose"
+
 
 const app = express()
 const port = process.env.REACT_APP_BACKEND_PORT || 3001
@@ -23,6 +25,14 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 
-app.listen(port, () => {
-    console.log(`Hosting on http://localhost:${port}`)
+const databasePath = "mongodb://it2810-43.idi.ntnu.no:27017/persongrabber"
+
+mongoose.connect(databasePath).then(() => {
+    app.listen(port, () => {
+        console.log(`Hosting on http://localhost:${port}`)
+    })
+}).catch(err => {
+    console.log(err)
 })
+
+
