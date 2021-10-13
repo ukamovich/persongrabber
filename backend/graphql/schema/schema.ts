@@ -9,10 +9,16 @@ type Person {
     gender: String!
     birthdate: String!
     bio: String!
+    cars: [Car!]!
 }
 
-type RootQuery {
-    people(page: Int): [Person!]!
+type Car {
+    _id: ID!
+    name: String!
+    company: String!
+    production_year: Int!
+    price: Float!
+    owner: Person!
 }
 
 input PersonInput {
@@ -24,8 +30,23 @@ input PersonInput {
     bio: String!
 }
 
+input CarInput {
+    name: String!
+    company: String!
+    production_year: Int!
+    price: Float!
+    owner: ID!
+}
+
+type RootQuery {
+    people(page: Int): [Person!]!
+    cars: [Car!]!
+    person(first_name: String): Person!
+}
+
 type RootMutation {
     createPerson(data: PersonInput): Person
+    createCar(data: CarInput): Car
 }
 
 schema {

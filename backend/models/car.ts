@@ -1,4 +1,5 @@
 import {Schema, Document, model} from "mongoose"
+import Person, { PersonInterface } from "./person"
 
 export {
     CarInterface
@@ -9,7 +10,8 @@ interface CarInterface extends Document{
     company: String
     production_year: number
     price: number
-    owner: Schema.Types.ObjectId
+    owner: Schema.Types.ObjectId | PersonInterface
+    _doc?: any
 }
 
 const carSchema = new Schema({
@@ -31,7 +33,7 @@ const carSchema = new Schema({
     },
     owner: {
         type: Schema.Types.ObjectId,
-        required: true
+        required: true,
     }
 }, {collection: "cars"})
 

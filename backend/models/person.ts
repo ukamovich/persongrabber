@@ -9,8 +9,9 @@ interface PersonInterface extends Document{
     last_name: String
     email: String
     gender: String
-    birthdate: any
+    birthdate: string | Date
     bio: String
+    _doc?: any
 }
 
 
