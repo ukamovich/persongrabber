@@ -1,25 +1,29 @@
-import Person from "./../../models/person"
+import Person, { PersonInterface } from "../../models/person"
 
-
-var dummyData = [{name: "Tod", age: 10}, {name: "Ted", age: 11}, {name: "Tid", age: 12}]
+const pageSize = 20
 
 var resolvers = {
-    people: () => {
-        return dummyData
-    },
-    createPerson: (args: {name: string, age: number}) => {
-        let test = new Person({
-            first_name: "Test1",
-            last_name: "Tester",
-            email: "test@test.test",
-            gender: "No gender",
-            birthdate: new Date(),
-            bio: "Lorem ipsum"
+    people: (args: {page: number}) => {
+        return Person.find().sort({}).skip((args.page - 1) * pageSize).limit(pageSize).then(people => {
+            return people
+        }).catch(err => {
+            throw err
         })
-        console.log(test)
-        let person = {name: args.name, age: args.age}
-        dummyData.push(person)
-        return person
+    },
+    createPerson: (args: {data: PersonInterface}) => {
+        let person = new Person({
+            first_name: args.data.first_name,
+            last_name: args.data.last_name,
+            email: args.data.email,
+            gender: args.data.gender,
+            birthdate: new Date(args.data.birthdate),
+            bio: args.data.bio,
+        })
+        return person.save().then(result => {
+            return result
+        }).catch(err => {
+            throw err
+        })
     }
 }
 

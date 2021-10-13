@@ -1,6 +1,20 @@
-import mongoose from "mongoose"
+import {Schema, Document, model, Model} from "mongoose"
 
-const personSchema = new mongoose.Schema({
+export {
+    PersonInterface
+}
+
+interface PersonInterface extends Document{
+    first_name: String
+    last_name: String
+    email: String
+    gender: String
+    birthdate: Date
+    bio: String
+}
+
+
+const personSchema: Schema = new Schema({
     first_name: {
         type: String,
         required: true
@@ -25,6 +39,8 @@ const personSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-})
+}, {collection: "Person"})
 
-export default mongoose.model("Person", personSchema)
+const Person : Model<PersonInterface> = model<PersonInterface>("Person", personSchema)
+
+export default Person

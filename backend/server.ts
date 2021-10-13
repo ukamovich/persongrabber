@@ -27,12 +27,16 @@ app.use('/graphql', graphqlHTTP({
 
 const databasePath = "mongodb://it2810-43.idi.ntnu.no:27017/persongrabber"
 
-mongoose.connect(databasePath).then(() => {
-    app.listen(port, () => {
-        console.log(`Hosting on http://localhost:${port}`)
-    })
-}).catch(err => {
-    console.log(err)
+mongoose.connect(databasePath)
+
+mongoose.connection.on("error", (err) => {
+    throw err
 })
 
+// let temp = mongoose.connection.collections
 
+// console.log(temp)
+
+app.listen(port, () => {
+    console.log(`Hosting on http://localhost:${port}`)
+})
