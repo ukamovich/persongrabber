@@ -1,4 +1,4 @@
-import {Schema, Document, model, Model} from "mongoose"
+import {Schema, Document, model} from "mongoose"
 
 export {
     PersonInterface
@@ -9,7 +9,7 @@ interface PersonInterface extends Document{
     last_name: String
     email: String
     gender: String
-    birthdate: Date
+    birthdate: any
     bio: String
 }
 
@@ -39,8 +39,6 @@ const personSchema: Schema = new Schema({
         type: String,
         required: true
     }
-}, {collection: "Person"})
+}, {collection: "people"})
 
-const Person : Model<PersonInterface> = model<PersonInterface>("Person", personSchema)
-
-export default Person
+export default model<PersonInterface>("Person", personSchema)

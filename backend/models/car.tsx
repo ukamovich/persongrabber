@@ -1,6 +1,18 @@
-import mongoose from "mongoose"
+import {Schema, Document, model} from "mongoose"
 
-const carSchema = new mongoose.Schema({
+export {
+    CarInterface
+}
+
+interface CarInterface extends Document{
+    name: String
+    company: String
+    production_year: number
+    price: number
+    owner: Schema.Types.ObjectId
+}
+
+const carSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -16,7 +28,11 @@ const carSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        required: true
     }
-})
+}, {collection: "cars"})
 
-export default mongoose.model("Car", carSchema)
+export default model<CarInterface>("Car", carSchema)

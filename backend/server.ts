@@ -25,7 +25,7 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 
-const databasePath = "mongodb://it2810-43.idi.ntnu.no:27017/persongrabber"
+const databasePath = "mongodb://it2810-43.idi.ntnu.no:27017/personGrabberDB"
 
 mongoose.connect(databasePath)
 

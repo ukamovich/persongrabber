@@ -5,7 +5,19 @@ const pageSize = 20
 var resolvers = {
     people: (args: {page: number}) => {
         return Person.find().sort({}).skip((args.page - 1) * pageSize).limit(pageSize).then(people => {
-            return people
+            return people.map(person => {
+                // Conversion since interface disallowes direct transumtation
+                let currentPerson = {
+                    _id: person._id, 
+                    first_name: person.first_name, 
+                    last_name: person.last_name, 
+                    gender: person.gender, 
+                    email: person.email, 
+                    bio: person.bio, 
+                    birthdate: person.birthdate.toISOString()
+                }
+                return currentPerson
+            })
         }).catch(err => {
             throw err
         })
