@@ -102,12 +102,11 @@ function App() {
             <button type="button" className="btn btn-primary mt-3" onClick={switchMode} >{"Switch"}</button>
           </div>
         </form>
-        
-          <PersonCard></PersonCard>
-          <PersonCard></PersonCard>
-          <PersonCard></PersonCard>
-          <PersonCard></PersonCard>
-          <PersonCard></PersonCard>
+        <div>
+          <PersonCardContainer/>
+        </div>
+          
+          
         
         
       </div>
