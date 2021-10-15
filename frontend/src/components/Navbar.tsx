@@ -1,20 +1,44 @@
-import "bootstrap/dist/css/bootstrap.css";
+import React from 'react';
+import {
+Nav,
+NavLink,
+Bars,
+NavMenu,
+NavBtn,
+NavBtnLink,
+} from './NavbarElements';
 
-function Navbar() {
-    return (
-        <nav className="navbar navbar-default">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <a className="navbar-brand" href="#">Person Grabber</a>
-            </div>
-            <ul className="nav navbar-nav flex-row mx-3">
-              <li className="active mx-3"><a href="#">Home</a></li>
-              <li><a href="#">Add Person</a></li>
-            </ul>
-            
-          </div>
-        </nav>
-    );
-}
+const Navbar = () => {
+return (
+	<>
+	<Nav>
+		<Bars />
+		<NavMenu>
+		<NavLink to='/Homepage'>
+			Person-Grabber
+		</NavLink>
+		<NavLink to='/Filter'>
+			Filter
+		</NavLink>
+
+        <NavLink to='/Search'>
+			Search
+		</NavLink>
+
+        <NavLink to='/Addperson'>
+			Add person
+		</NavLink>
+
+        <NavLink to='/Addcar'>
+			Add car
+		</NavLink>
+		
+		
+		
+		</NavMenu>
+	</Nav>
+	</>
+);
+};
 
 export default Navbar;

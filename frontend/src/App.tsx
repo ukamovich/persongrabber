@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import './App.css';
 import PageWrapper from './components/PageWrapper';
 import "bootstrap/dist/css/bootstrap.css";
-import Navbar  from './components/Navbar';
 import "./components/validation";
 import PersonCard from "./components/PersonCard"
 import PersonCardContainer from './components/PersonCardContainer';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+//import Search from './components/Search';
+//import Filter from './components/Filter';
+//import Homepage from './components/Homepage';
+import Navbar from './components/Navbar';
+//import Addcar from './components/Addcar';
 
 let backendPort = process.env.REACT_APP_BACKEND_PORT || 3001
 function App() {
@@ -71,48 +78,28 @@ function App() {
   }
 
   return (
-    <PageWrapper>
+    
     <div className="App">
       <div className="">
-        <Navbar/>
-        
-      <div>
 
-        </div>
-        <form className="requires-validation" noValidate onSubmit={handleSubmit}>
-          <h3>Add a new person <span className="label label-default"></span></h3>
-            <div className="col-md-12">
-              <input type="text" className="form-control mt-3" required placeholder="Name" name="name" onChange={event => setName(event.target.value)}/>
-              <div className="invalid-feedback">Name field is empty</div>
-            </div>
-            <div className="col-md-12">
-              <input type="number" className="form-control mt-3" placeholder="Age" name="age" onChange={event => setAge(parseInt(event.target.value))}/>
-              <div className="invalid-feedback">Age field is empty</div>
-            </div>
-            <div className="form-group">
-              <select className="form-select mt-3" name="name" onChange={event => setGender(event.target.value)} id="exampleFormControlSelect1">
-                <option selected disabled value="">Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-            
-          <div className="">
-            <button type="submit" id="submit" className="btn btn-primary mt-3 mx-3" >{isGet ? "Get people" : "Add person"}</button>
-            <button type="button" className="btn btn-primary mt-3" onClick={switchMode} >{"Switch"}</button>
-          </div>
-        </form>
-        <div>
-          <PersonCardContainer/>
-        </div>
-          
-          
         
+          <Router>
+          
+            <Navbar />'
+            <PageWrapper>
+              <Switch>
+                <Route path='/Homepage' exact component={PersonCardContainer} />
+                {/* <Route path='/Search' component={null} /> */}
+                {/* <Route path='/Filter' component={Filter} />
+                <Route path='/Addperson' component={Addperson} />
+                <Route path='/Addcar' component={Addcar} /> */}
+              </Switch>
+            </PageWrapper>
+          </Router> 
         
+          
       </div>
     </div>
-    </PageWrapper>
-  );
-}
+  )}
 
 export default App;
