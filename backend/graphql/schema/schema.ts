@@ -2,16 +2,51 @@ import { buildSchema } from "graphql"
 
 var schema = buildSchema(`
 type Person {
+    _id: ID!
+    first_name: String!
+    last_name: String!
+    email: String!
+    gender: String!
+    birthdate: String!
+    bio: String!
+    cars: [Car!]!
+}
+
+type Car {
+    _id: ID!
     name: String!
-    age: Int!
+    company: String!
+    production_year: Int!
+    price: Float!
+    owner: Person!
+}
+
+input PersonInput {
+    first_name: String!
+    last_name: String!
+    email: String!
+    gender: String!
+    birthdate: String!
+    bio: String!
+}
+
+input CarInput {
+    name: String!
+    company: String!
+    production_year: Int!
+    price: Float!
+    owner: ID!
 }
 
 type RootQuery {
-    people: [Person!]!
+    people(page: Int): [Person!]!
+    cars: [Car!]!
+    person(first_name: String): Person!
 }
 
 type RootMutation {
-    createPerson(name: String, age: Int): Person
+    createPerson(data: PersonInput): Person
+    createCar(data: CarInput): Car
 }
 
 schema {

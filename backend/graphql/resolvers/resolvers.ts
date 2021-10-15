@@ -1,14 +1,11 @@
-var dummyData = [{name: "Tod", age: 10}, {name: "Ted", age: 11}, {name: "Tid", age: 12}]
+// import Person, { PersonInterface } from "../../models/person"
+// import Car, { CarInterface } from "../../models/car"
+import peopleResolver from "./people"
+import carResolver from "./cars"
 
 var resolvers = {
-    people: () => {
-        return dummyData
-    },
-    createPerson: (args: {name: string, age: number}) => {
-        let person = {name: args.name, age: args.age}
-        dummyData.push(person)
-        return person
-    }
+    ...peopleResolver,
+    ...carResolver
 }
 
 export default resolvers
