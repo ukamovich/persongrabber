@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.css";
 import "./components/validation";
@@ -16,27 +15,17 @@ import Navbar from './components/Navbar';
 function App() {
 
   return (
-    
     <div className="App">
-      <div className="">
-
-        
           <Router>
-          
             <Navbar />'
             <PageWrapper>
               <Switch>
                 <Route path='/Homepage' exact component={PersonCardContainer} />
-                {/* <Route path='/Search' component={null} /> */}
-                {/* <Route path='/Filter' component={Filter} />
-                <Route path='/Addperson' component={Addperson} />
+                {/* <Route path='/Addperson' component={Addperson} />
                 <Route path='/Addcar' component={Addcar} /> */}
               </Switch>
             </PageWrapper>
-          </Router> 
-        
-          
-      </div>
+          </Router>           
     </div>
   )}
 

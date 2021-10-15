@@ -13,7 +13,7 @@ function PersonCard({name, age, about}: PersonProps) {
     return(
         <div className="profile-card" style={{width: "170px"}} >
             <header>
-                <img className="card-img-top" src="https://365webresources.com/wp-content/uploads/2016/09/FREE-PROFILE-AVATARS.png" alt="Card image"/>
+                <img className="card-img-top" src="https://365webresources.com/wp-content/uploads/2016/09/FREE-PROFILE-AVATARS.png" alt="Card"/>
                 <div className="card-body">
                     <h1 className="card-title" style={{fontSize: "25px"}}>{name}</h1>
                     {/* <h4 className="card-text"></h4> */}

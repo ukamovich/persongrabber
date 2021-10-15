@@ -1,7 +1,7 @@
 import Person, { PersonInterface } from "../../models/person"
 import { personTransformer } from "../transformers"
 
-const pageSize: number = 10
+const pageSize: number = 20
 
 let resolver = {
     people: async (args: {page: number}) => {
