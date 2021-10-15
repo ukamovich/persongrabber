@@ -1,6 +1,5 @@
-async function fetchGrabber(queryBody: String) {
-    let port = 3001 || process.env.REACT_APP_BACKEND_PORT
-    let result = await fetch(`http://localhost:${port}/graphql`, {
+async function fetchGrabber(queryBody: String, url: string) {
+    let result = await fetch(url, {
         method: "POST",
         body: JSON.stringify(queryBody),
         headers: {
