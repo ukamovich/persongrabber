@@ -1,5 +1,5 @@
 import {Schema, Document, model} from "mongoose"
-import Person, { PersonInterface } from "./person"
+import { PersonInterface } from "./person"
 
 export {
     CarInterface

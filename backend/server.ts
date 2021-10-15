@@ -2,13 +2,12 @@ import express from "express";
 import { graphqlHTTP } from 'express-graphql'
 import schema from "./graphql/schema/schema"
 import resolvers from "./graphql/resolvers/resolvers"
-import path from "path"
-require("dotenv").config({ path: path.resolve(__dirname + "/../frontend/.env")})
+require("dotenv").config({ path: __dirname})
 import mongoose from "mongoose"
 
 
 const app = express()
-const port = process.env.REACT_APP_BACKEND_PORT || 3001
+const port = process.env.PORT || 3001
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
