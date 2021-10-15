@@ -1,4 +1,4 @@
-async function fetchGrabber(queryBody: String, url: string) {
+async function fetchGrabber(queryBody: {query: String} , url: string) {
     let result = await fetch(url, {
         method: "POST",
         body: JSON.stringify(queryBody),
@@ -13,3 +13,5 @@ async function fetchGrabber(queryBody: String, url: string) {
 
     return result.json()
 }
+
+export default fetchGrabber

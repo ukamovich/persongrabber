@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import fetchGrapper from "./_helpers/fetchGrabber"
 
 let backendPort = process.env.REACT_APP_BACKEND_PORT || 3001
 function App() {
@@ -18,43 +19,21 @@ function App() {
     let queryBody = {
       query: `
         query {
-          people {
-            name
-            age
+          people(page:1) {
+            first_name
+            last_name
+            gender
+            birthdate
           }
         }
       `
     }
 
-    if (!isGet) {
-      queryBody = {
-        query: `
-          mutation {
-            createPerson(name: "${name}", age: ${age}) {
-              name
-              age
-            }
-          }
-        `
-      }
-    }
-
-    fetch(`http://localhost:${backendPort}/graphql`, {
-      method: "POST",
-      body: JSON.stringify(queryBody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then(res => {
-      if (res.status !== 200 && res.status !== 201) {
-        throw new Error("Some error occured!")
-      }
-      return res.json()
-    }).then(resData => {
-      console.log(resData)
-    }).catch(err => {
-      console.log(err)
+    fetchGrapper(queryBody, `http://localhost:${backendPort}/graphql`).then((res) => {
+      console.log(res)
     })
+
+  
   }
 
   let switchMode = () => {
