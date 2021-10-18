@@ -38,15 +38,15 @@ input CarInput {
     owner: ID!
 }
 
-input SearchInput {
+input FieldInput {
     value: String!
     field: String!
 }
 
 type RootQuery {
-    people(page: Int, search: SearchInput, sort: SearchInput): [Person!]!
+    people(page: Int, search: FieldInput, sort: FieldInput): [Person!]!
     cars: [Car!]!
-    person(first_name: String): Person!
+    person(search: FieldInput): Person!
 }
 
 type RootMutation {
