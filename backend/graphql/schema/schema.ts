@@ -38,8 +38,13 @@ input CarInput {
     owner: ID!
 }
 
+input SearchInput {
+    value: String!
+    field: String!
+}
+
 type RootQuery {
-    people(page: Int): [Person!]!
+    people(page: Int, search: SearchInput, sort: SearchInput): [Person!]!
     cars: [Car!]!
     person(first_name: String): Person!
 }
