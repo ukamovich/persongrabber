@@ -64,14 +64,6 @@ function getSortQuery(sort: {value: string, field: string}) {
 let resolver = {
     people: async (args: {page: number, search: {value: string, field: string}, sort: {value: string, field: string}}) => {
         try {
-            // const people = await Person.find().skip((args.page - 1) * pageSize).limit(pageSize).aggregate([{
-            //     $lookup: {
-            //         from: "cars",
-            //         localField: "_id",
-            //         foreignField: "owner",
-            //         as: "cars"
-            //     }
-            // }])
             const people = await Person.find(getSearchQuery(args.search)).sort(getSortQuery(args.sort)).skip((args.page - 1) * pageSize).limit(pageSize)
             return people.map((person) => {
                 return personTransformer(person)
