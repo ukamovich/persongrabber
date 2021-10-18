@@ -5,6 +5,9 @@ const pageSize: number = 20
 
 function getSearchQuery(search: {value: string, field: string}) {
     let result = {}
+    if (!search) {
+        return result
+    }
     switch (search.field) {
         case "first_name":
             result = {first_name: {$regex: new RegExp(search.value.toLowerCase(), "i")}}
@@ -29,6 +32,9 @@ function getSearchQuery(search: {value: string, field: string}) {
 
 function getSortQuery(sort: {value: string, field: string}) {
     let result = {}
+    if (!sort) {
+        return result
+    }
     switch (sort.field) {
         case "first_name":
             result = {first_name: sort.value}
