@@ -64,7 +64,12 @@ function getSortQuery(sort: {value: string, field: string}) {
 let resolver = {
     people: async (args: {page: number, search: {value: string, field: string}, sort: {value: string, field: string}}) => {
         try {
-            const people = await Person.find(getSearchQuery(args.search)).sort(getSortQuery(args.sort)).skip((args.page - 1) * pageSize).limit(pageSize)
+            let people
+            if (args.page){
+                people = await Person.find(getSearchQuery(args.search)).sort(getSortQuery(args.sort)).skip((args.page - 1) * pageSize).limit(pageSize)
+            } else {
+                people = await Person.find(getSearchQuery(args.search)).sort(getSortQuery(args.sort))
+            }
             return people.map((person) => {
                 return personTransformer(person)
             })

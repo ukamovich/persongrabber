@@ -10,16 +10,18 @@ import fetchGrabber from "../_helpers/fetchGrabber";
 // denne skal represemtere data basert på query.
 let port = 3001 || process.env.REACT_APP_BACKEND_PORT
 let backendURL = `http://localhost:${port}/graphql`
+
+interface dateInterface {
+    _id: string,
+    first_name: string,
+    last_name: string,
+    gender: string,
+    birthdate: string
+}
 function PersonCardContainer() {
 
     const [currentPage, setCurrentPage] = React.useState(1);
-    const [data, setData] = React.useState([{
-        "_id": "dummy",
-        "first_name": "dummy",
-        "last_name": "dummy",
-        "gender": "dummy",
-        "birthdate": "dummy"
-      }])
+    const [data, setData] = React.useState<dateInterface[]>()
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);   
         // må nå si ifra til backend om den rangen vi vil ha data fra 
