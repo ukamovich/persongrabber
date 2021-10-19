@@ -12,15 +12,8 @@ return (
 	<Nav>
 		<Bars />
 		<NavMenu>
-		<NavLink to='/Homepage'>
+		<NavLink to='/'>
 			Person-Grabber
-		</NavLink>
-		<NavLink to='/Filter'>
-			Filter
-		</NavLink>
-
-        <NavLink to='/Search'>
-			Search
 		</NavLink>
 
         <NavLink to='/Addperson'>
