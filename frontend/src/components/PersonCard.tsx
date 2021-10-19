@@ -2,14 +2,27 @@ import "bootstrap/dist/css/bootstrap.css";
 
 interface PersonProps {
     name: string;
-    age: number;
-    about: string;
+    birthdate: string;
+    gender: string;
 }
 
 
+//Source: https://www.codegrepper.com/code-examples/javascript/javascript+get+age+from+date
+function getAge(dateString: string) 
+{
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    return age;
+}
 
 
-function PersonCard({name, age, about}: PersonProps) {
+function PersonCard({name, birthdate, gender}: PersonProps) {
     return(
         <div className="profile-card" style={{width: "170px"}} >
             <header>
@@ -17,9 +30,9 @@ function PersonCard({name, age, about}: PersonProps) {
                 <div className="card-body">
                     <h1 className="card-title" style={{fontSize: "25px"}}>{name}</h1>
                     {/* <h4 className="card-text"></h4> */}
-                    <h4 className="card-text">Age: {age}</h4>
+                    <h4 className="card-text">Age: {getAge(birthdate)}</h4>
 
-                    <p className="card-text">Info: {about}</p>
+                    <p className="card-text">Gender: {gender}</p>
                     
                 </div>
             </header>
