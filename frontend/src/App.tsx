@@ -10,7 +10,7 @@ import PersonCardContainer from './components/PersonCardContainer';
 //import Filter from './components/Filter';
 //import Homepage from './components/Homepage';
 import Navbar from './components/Navbar';
-import { AddPersonPage } from './components/pages/AddPersonPage';
+import { AddPersonForm } from './components/pages/AddPersonForm';
 import { AddCarPage } from './components/pages/AddCarPage';
 
 //import Addcar from './components/Addcar';
@@ -20,11 +20,11 @@ function App() {
   return (
     <div className="App">
           <Router>
-            <Navbar />'
+            <Navbar />
             <PageWrapper>
               <Switch>
                 <Route path='/Homepage' exact component={PersonCardContainer} />
-                <Route path='/Addperson' component={AddPersonPage} />
+                <Route path='/Addperson' component={AddPersonForm} />
                 <Route path='/Addcar' component={AddCarPage} />
               </Switch>
             </PageWrapper>
