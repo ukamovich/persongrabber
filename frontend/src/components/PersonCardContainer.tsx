@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.css";
-
 import PersonCard from "./PersonCard";
 import OptionsBar from "./OptionsBar"
-
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import fetchGrabber from "../_helpers/fetchGrabber";
 import Box from '@mui/material/Box';
+import {ThemeProvider} from '@mui/material/styles';
+import {paginationTheme} from "./Themes";
 
 const port = 3001 || process.env.REACT_APP_BACKEND_PORT
 const backendURL = `http://localhost:${port}/graphql`
@@ -29,7 +29,6 @@ function PersonCardContainer() {
     const [searchOption, setSearchOption] = useState("first_name");
     const [genders, setGenders] = useState([])
     const [gender, setGender] = useState("All")
-
     const [currentPage, setCurrentPage] = useState(1);
     const [data, setData] = useState<dateInterface[]>()
 
@@ -96,6 +95,7 @@ function PersonCardContainer() {
 
 
         <div className="container">
+
             <OptionsBar 
                 setSearch={setSearch} 
                 handleSearch={handleSearch}
@@ -115,10 +115,14 @@ function PersonCardContainer() {
 
 
 
+
+
             <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, bgcolor: 'red.300', borderColor: "white" }}>
                 <Box sx={{ p: 5, order: 2, bgcolor: 'white.300' }}>
                     <Stack spacing={4}>
+                    <ThemeProvider theme={paginationTheme}>
                         <Pagination count={pages} page={currentPage} onChange={handleChange} variant="outlined" shape="rounded" size="large" color="secondary" />
+                        </ThemeProvider>
                     </Stack>
                 </Box>
             </Box>
