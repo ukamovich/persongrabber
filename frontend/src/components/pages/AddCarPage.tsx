@@ -1,9 +1,15 @@
+import React from "react";
 
 
 export function AddCarPage() {
+
+  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    alert();
+  }
     return (
   
-      <form className="requires-validation" noValidate >
+      <form className="requires-validation" noValidate onSubmit={submitForm} >
         <h3>Add a new car <span className="label label-default"></span></h3>
           <div className="col-md-12">
             <input type="text" className="form-control mt-3" required placeholder="Name of owner" name="name" />
