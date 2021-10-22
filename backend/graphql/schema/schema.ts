@@ -21,6 +21,11 @@ type Car {
     owner: Person!
 }
 
+type PeopleInfo {
+    size: Int!
+    distinct: [String!]!
+}
+
 input PersonInput {
     first_name: String!
     last_name: String!
@@ -44,7 +49,8 @@ input FieldInput {
 }
 
 type RootQuery {
-    people(page: Int, search: FieldInput, sort: FieldInput): [Person!]!
+    people(page: Int, search: [FieldInput], sort: FieldInput): [Person!]!
+    generalPeopleInfo(search: [FieldInput], distinct: String): PeopleInfo!
     cars: [Car!]!
     person(search: FieldInput): Person!
 }
