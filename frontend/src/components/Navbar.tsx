@@ -15,13 +15,6 @@ return (
 		<NavLink to='/Homepage'>
 			Person-Grabber
 		</NavLink>
-		<NavLink to='/Filter'>
-			Filter
-		</NavLink>
-
-        <NavLink to='/Search'>
-			Search
-		</NavLink>
 
         <NavLink to='/Addperson'>
 			Add person
@@ -30,8 +23,8 @@ return (
         <NavLink to='/Addcar'>
 			Add car
 		</NavLink>
-		
-		
+
+	
 		
 		</NavMenu>
 	</Nav>
