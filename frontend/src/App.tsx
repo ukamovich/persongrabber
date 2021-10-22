@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
           <Router>
-            <Navbar />'
+            <Navbar />
             <PageWrapper>
               <Switch>
                 <Route path='/Homepage' exact component={PersonCardContainer} />
