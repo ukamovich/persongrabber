@@ -10,9 +10,9 @@ import Box from '@mui/material/Box';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { IconButton } from '@mui/material';
-import {textfieldTheme, whiteTheme} from "./Themes";
+import {whiteTheme} from "./Themes";
+import {MenuItemTheme} from "./Themes";
 import {ThemeProvider} from '@mui/material/styles';
-import {withTheme} from '@mui/material/styles';
 
 interface OptionProps {
     setSearch: (value: string) => void,
@@ -42,22 +42,24 @@ function OptionsBar(props: OptionProps) {
     return(
 
 
-
         <div style={{ width: '100%' }}>
+
+                 <ThemeProvider theme = {whiteTheme}>
+
         <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, bgcolor: 'red.300', borderColor: "white" }}>
 
             <Box sx={{ p: 1, order: 2, bgcolor: 'white.300' }}>
 
-            <ThemeProvider theme={textfieldTheme}>
-                <TextField id="outlined-basic" sx={{ color: 'success.main' }} label="Search" variant="outlined" onChange={event => props.setSearch(event.target.value)} />
-            </ThemeProvider>
+                <TextField id="filled-basic" label="Search" variant="filled" onChange={event => props.setSearch(event.target.value)} />
             </Box>
 
             <Box sx={{ p: 1, order: 2, bgcolor: 'white .300' }}>
 
-                <FormControl sx={{ minWidth: 120, color: 'third' }}>
 
-                <InputLabel id="demo-simple-select-autowidth-label">Search on:</InputLabel> 
+                <FormControl variant = "filled"sx={{minWidth: 120, color: 'third' }}>
+
+                <InputLabel >Search on:</InputLabel>
+
                     <Select
                         labelId="demo-simple-select-autowidth-label"
                         id="demo-simple-select-autowidth"
@@ -68,15 +70,19 @@ function OptionsBar(props: OptionProps) {
                     >
                         <MenuItem value={"first_name"}>First name</MenuItem>
                         <MenuItem value={"last_name"}>Last name</MenuItem>
+
                     </Select>
+
                 </FormControl>
+
 
 
             </Box>
             <Box sx={{ p: 1, order: 2, bgcolor: 'white .300' }}>
+                
 
-                <FormControl sx={{ minWidth: 120, color: 'third' }}>
-                    <InputLabel id="demo-simple-select-autowidth-label">Gender:</InputLabel>
+                <FormControl variant = "filled" sx={{ minWidth: 120, color: 'third' }}>
+                    <InputLabel>Set gender</InputLabel>
                     <Select
                         labelId="demo-simple-select-autowidth-label"
                         id="demo-simple-select-autowidth"
@@ -110,6 +116,8 @@ function OptionsBar(props: OptionProps) {
             </Box>
 
         </Box>
+
+        </ThemeProvider>
     </div>
     );
 }
