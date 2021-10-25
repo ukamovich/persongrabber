@@ -1,0 +1,22 @@
+.hovering {
+    width: 300px;
+    z-index: 2;
+    position: absolute;
+    background-color: #282c34;
+    border-color: #63D471;
+    border-width: 3px;
+    border-style: solid;
+
+}
+
+.notHovering > img {
+    width: 150px;
+    height: 150px;
+}
+.notHovering > img {
+    width: 150px;
+    height: 150px;
+}
+
+
+
