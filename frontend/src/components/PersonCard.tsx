@@ -1,14 +1,26 @@
 import "bootstrap/dist/css/bootstrap.css";
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import fetchGrabber from "../_helpers/fetchGrabber";
 import './personcard.css';
-
 
 interface PersonProps {
     name: string;
     birthdate: string;
     gender: string;
+    _id: string;
 }
 
+interface DataInterface {
+    bio: string;
+    email: string;
+    cars: [{
+        name: string;
+        price: number;
+    }]
+}
+
+const port = 3001 || process.env.REACT_APP_BACKEND_PORT
+const backendURL = `http://localhost:${port}/graphql`
 
 //Source: https://www.codegrepper.com/code-examples/javascript/javascript+get+age+from+date
 function getAge(dateString: string) {
@@ -24,9 +36,11 @@ function getAge(dateString: string) {
 
 
 
-function PersonCard({ name, birthdate, gender }: PersonProps) {
+function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     const [isHovering, setIsHovering] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
+    const [data, setData] = useState<DataInterface>()
 
     const getGenderImage = (): string => {
         if (gender === "Male") {
@@ -40,10 +54,54 @@ function PersonCard({ name, birthdate, gender }: PersonProps) {
 
     }
 
+    useEffect(() => {
+        const checkIfClickedOutside = (event: any) => {
+            
+            if (isOpen && isHovering) {
+                setIsOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", checkIfClickedOutside)
+
+        return () => {
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+        }
+    }, [isOpen])
+
+    const getPersonData = () => {
+        let queryBody = {
+            query: `
+                query {
+                    person (search:  [{value: "${_id}", field:"_id"}]) {
+                        bio
+                        email
+                        cars {
+                            name
+                            price
+                        }
+                    }
+                }
+            `
+        }
+        fetchGrabber(queryBody, backendURL).then(res => {
+            setData(res.data.person);
+        })
+    }
+
+    const clickHandler = () => {
+        if (isOpen) {
+            console.log("Sometihn")
+        } else {
+            getPersonData()
+            setIsOpen(true)
+        }
+    }
 
     const hovering = () => {
 
-        if (isHovering) {
+        if (isOpen) {
+            console.log(data)
             return (
                 <header className = "hovering">
                     <img className="card-img-top" src= {getGenderImage()} alt="Card" />
@@ -52,7 +110,12 @@ function PersonCard({ name, birthdate, gender }: PersonProps) {
                         {/* <h4 className="card-text"></h4> */}
                         <h4 className="card-text">Age: {getAge(birthdate)}</h4>
 
+                        
+
                         <p className="card-text">Gender: {gender}</p>
+                        <p>Email: {data && data.email}</p>
+                        <p>About: {data && data.bio}</p>
+                        <p>About: {data && data.cars.map(car => {return car.name + " " + car.price})}</p>
 
                     </div>
                 </header>
@@ -80,11 +143,14 @@ function PersonCard({ name, birthdate, gender }: PersonProps) {
 
     return (
 
-        <div className="profile-card" style={{ width: "170px" }} onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)} >
+        // <div className="profile-card" style={{ width: "170px" }} onMouseEnter={() => setIsHovering(true)}
+        //     onMouseLeave={() => setIsHovering(false)} >
+        //     {hovering()}
+
+
+        // </div>
+        <div className="profile-card" style={{ width: "170px" }} onClick={clickHandler} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}  >
             {hovering()}
-
-
         </div>
     );
 }

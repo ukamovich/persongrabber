@@ -108,7 +108,7 @@ function PersonCardContainer() {
                 setSort={setSort}/>
             <div className="row">
                 {data && data.map(el => {
-                    return <PersonCard name={el.first_name + " " + el.last_name} birthdate={el.birthdate} gender={el.gender} key={el._id}></PersonCard>
+                    return <PersonCard _id={el._id} name={el.first_name + " " + el.last_name} birthdate={el.birthdate} gender={el.gender} key={el._id}></PersonCard>
                 })}
             </div>
 
