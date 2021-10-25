@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState, useEffect } from 'react';
 import fetchGrabber from "../_helpers/fetchGrabber";
-import './personcard.css';
+import './styles/card.css';
 
 interface PersonProps {
     name: string;
@@ -17,6 +17,17 @@ interface DataInterface {
         name: string;
         price: number;
     }]
+}
+
+const openCss = {
+    width: "30%",
+    backgroundColor: "#282c34",
+    border: "3px solid #63D471"
+}
+
+const closedCss = {
+    width: "20%"
+
 }
 
 const port = 3001 || process.env.REACT_APP_BACKEND_PORT
@@ -54,16 +65,16 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     }
 
-    useEffect(() => {
-        const checkIfClickedOutside = (event: any) => {
-            console.log(event)
-            if (isOpen && isHovering) {
-                setIsOpen(false)
-            }
+    const checkIfClickedOutside = (event: any) => {
+        if (isOpen && isHovering) {
+            console.log("Reached!")
+            setIsOpen(false)
         }
-        document.addEventListener("mousedown", checkIfClickedOutside)
+    }
+    useEffect(() => {
+        document.addEventListener("mousedown", checkIfClickedOutside, true)
         return () => {
-            document.removeEventListener("mousedown", checkIfClickedOutside)
+            document.removeEventListener("mousedown", checkIfClickedOutside, true)
         }
     }, [isOpen])
 
@@ -104,7 +115,6 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
                     <img className="card-img-top" src={getGenderImage()} alt="Card" />
                     <div className="card-body">
                         <h1 className="card-title" style={{ fontSize: "25px" }}>{name}</h1>
-                        {/* <h4 className="card-text"></h4> */}
                         <h4 className="card-text">Age: {getAge(birthdate)}</h4>
                         <p className="card-text">Gender: {gender}</p>
                         <p><b>Email:</b> {data && data.email}</p>
@@ -139,11 +149,8 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
                     <img className="card-img-top" src={getGenderImage()} alt="Card" />
                     <div className="card-body">
                         <h1 className="card-title" style={{ fontSize: "25px" }}>{name}</h1>
-                        {/* <h4 className="card-text"></h4> */}
                         <h4 className="card-text">Age: {getAge(birthdate)}</h4>
-
                         <p className="card-text">Gender: {gender}</p>
-
                     </div>
                 </header>
             )
@@ -151,7 +158,10 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
         }
 
     }
-
+    const test = (test: boolean) => {
+        console.log(test)
+        setIsHovering(test)
+    }
     return (
 
         // <div className="profile-card" style={{ width: "170px" }} onMouseEnter={() => setIsHovering(true)}
@@ -161,10 +171,10 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
         // </div>
         <div className="profile-card" 
-            style={{ width: "170px", cursor: "pointer", border: isHovering ? "2px solid #63D471" : 0 }} 
+            style={isOpen ? openCss : closedCss} 
             onClick={clickHandler} 
-            onMouseEnter={() => setIsHovering(true)} 
-            onMouseLeave={() => setIsHovering(false)}  >
+            onMouseEnter={() => test(true)} 
+            onMouseLeave={() => test(false)}>
             {hovering()}
         </div>
     );

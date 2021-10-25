@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
 import "./components/validation";
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -17,8 +16,8 @@ function App() {
             <PageWrapper>
               <Switch>
                 <Route path='/' exact component={PersonCardContainer} />
-                {/* <Route path='/Addperson' component={Addperson} />
-                <Route path='/Addcar' component={Addcar} /> */}
+                {/* <Route path='/add-person' component={Addperson} />
+                <Route path='/add-car' component={Addcar} /> */}
               </Switch>
             </PageWrapper>
           </Router>           

@@ -1,59 +1,36 @@
 import { createTheme } from '@mui/material/styles'
-import { padding } from '@mui/system';
 
 
-export const paginationTheme = createTheme({
+export const mainTheme = createTheme({
   palette: {
-    secondary: {
-      main: '#19D5C6',
-      contrastText: 'fff',
-    },
+    mode: "dark",
+    primary: {
+      main: "#a7d5fa"
+    }
   },
+  typography: {
+    fontSize: 15,
+  }
+});
 
+export const navbarTheme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#63D471"
+    }
+  },
   components: {
-    MuiPaginationItem: {
+    MuiLink: {
       styleOverrides: {
         root: {
-          color: "white",
-
-        },
-      },
-    },
-  },
-});
-
-
-
-export const whiteTheme = createTheme({
-  components: {
-    MuiInputBase: {
-      styleOverrides: {
-        input: {
-          background: "white",
+          ":hover": "transparent"
         }
-      },
-    },
-  },
-});
+      }
+    }
+  }
+})
 
-
-
-export const MenuItemTheme = createTheme({
-  components: {
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-
-          backgroundColor: "white",
-
-        }
-
-       
-       
-      },
-    },
-  },
-});
 
 
 

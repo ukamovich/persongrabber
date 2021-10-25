@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import fetchGrabber from "../_helpers/fetchGrabber";
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
-import { paginationTheme } from "./Themes";
+import { mainTheme } from "./Themes";
 
 const port = 3001 || process.env.REACT_APP_BACKEND_PORT
 const backendURL = `http://localhost:${port}/graphql`
@@ -116,7 +116,7 @@ function PersonCardContainer() {
             <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, bgcolor: 'red.300', borderColor: "white" }}>
                 <Box sx={{ p: 5, order: 2, bgcolor: 'white.300' }}>
                     <Stack spacing={4}>
-                        <ThemeProvider theme={paginationTheme}>
+                        <ThemeProvider theme={mainTheme}>
                             <Pagination count={pages} page={currentPage} onChange={handleChange} variant="outlined" shape="rounded" size="large" color="secondary" />
                         </ThemeProvider>
                     </Stack>
