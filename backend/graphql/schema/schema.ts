@@ -52,7 +52,7 @@ type RootQuery {
     people(page: Int, search: [FieldInput], sort: FieldInput): [Person!]!
     generalPeopleInfo(search: [FieldInput], distinct: String): PeopleInfo!
     cars: [Car!]!
-    person(search: FieldInput): Person!
+    person(search: [FieldInput]): Person!
 }
 
 type RootMutation {
