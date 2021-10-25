@@ -17,8 +17,7 @@ To store and maintain our database, we opted for MongoDB Community Edition (NoSQ
 
 # Redux (global state management)
 
-
-# UI components and libraries
+# UI components and libraries (Håkon)
 
 # Web accessibility
 
