@@ -113,10 +113,6 @@ function PersonCardContainer() {
             </div>
 
 
-
-
-
-
             <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, bgcolor: 'red.300', borderColor: "white" }}>
                 <Box sx={{ p: 5, order: 2, bgcolor: 'white.300' }}>
                     <Stack spacing={4}>
