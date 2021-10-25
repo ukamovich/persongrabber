@@ -48,7 +48,6 @@ function PersonCardContainer() {
             setCurrentPage(1)
             dispatch(setPage(1))
         }
-        console.log(page)
         let queryBody = {
             query: `
                 query {
