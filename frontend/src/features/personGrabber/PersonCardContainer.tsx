@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
 
 import { useAppDispatch, useAppSelector } from '../../hooks'
+import { setPage } from './grabberSlice'
 import PersonCard from "./PersonCard";
 import OptionsBar from "./OptionsBar"
 import fetchGrabber from "../../_helpers/fetchGrabber";
@@ -26,6 +27,9 @@ interface dateInterface {
 
 function PersonCardContainer() {
 
+    const dispatch = useAppDispatch()
+    const page = useAppSelector((state) => state.page)
+
     const [pages, setPages] = useState(10);
     const [sort, setSort] = useState('desc');
     const [search, setSearch] = useState("");
@@ -35,10 +39,16 @@ function PersonCardContainer() {
     const [currentPage, setCurrentPage] = useState(1);
     const [data, setData] = useState<dateInterface[]>()
 
+    /**
+     * Handles search requests
+     * @param resetPage set page to 1 or not
+     */
     const handleSearch = (resetPage = false) => {
         if (resetPage) {
             setCurrentPage(1)
+            dispatch(setPage(1))
         }
+        console.log(page)
         let queryBody = {
             query: `
                 query {
@@ -74,24 +84,27 @@ function PersonCardContainer() {
         setCurrentPage(value);
     };
 
+    // On page load
     useEffect(() => {
         let query = {
             query: `
-                query {
-                    generalPeopleInfo(distinct: "gender") {
-                        distinct
-                    }
+            query {
+                generalPeopleInfo(distinct: "gender") {
+                    distinct
                 }
+            }
             `
         }
         fetchGrabber(query, backendURL).then((res) => {
             setGenders(res.data.generalPeopleInfo.distinct)
         })
-
+        
     }, [])
-
+    
+    // On selected page change or sort change
     useEffect(() => {
         handleSearch()
+        dispatch(setPage(currentPage))
     }, [currentPage, sort])
 
     return (
