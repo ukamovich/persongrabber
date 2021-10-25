@@ -8,6 +8,7 @@ async function fetchGrabber(queryBody: {query: String} , url: string) {
     })
 
     if (result.status !== 200 && result.status !== 201) {
+        console.log(result)
         throw new Error("Some error occured!")
     }
 

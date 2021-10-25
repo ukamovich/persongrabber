@@ -1,36 +1,45 @@
+import { argsToArgsConfig } from "graphql/type/definition"
 import Person, { PersonInterface } from "../../models/person"
 import { personTransformer } from "../transformers"
 
+interface FieldInput {
+    value: string,
+    field: string
+}
+
 const pageSize: number = 20
 
-function getSearchQuery(search: {value: string, field: string}) {
-    let result = {}
+function getSearchQuery(search: FieldInput[]) {
+    let result: {[k:string]: any} = {}
     if (!search) {
         return result
     }
-    switch (search.field) {
-        case "first_name":
-            result = {first_name: {$regex: new RegExp(search.value.toLowerCase(), "i")}}
-            break
-        case "last_name": 
-            result = {last_name: {$regex: new RegExp(search.value.toLowerCase(), "i")}}
-            break
-        case "gender":
-            result = {gender: search.value}
-            break
-        case "_id":
-            result = {_id: search.value}
-            break
-        case "bio":
-            result = {bio: {$regex: new RegExp(search.value.toLowerCase(), "i")}}
-            break
-        default:
-            break
+
+    for (let element of search) {
+        switch (element.field) {
+            case "first_name":
+                result.first_name = {$regex: new RegExp(element.value.toLowerCase(), "i")}
+                break
+            case "last_name": 
+                result.last_name = {$regex: new RegExp(element.value.toLowerCase(), "i")}
+                break
+            case "gender":
+                result.gender = element.value
+                break
+            case "_id":
+                result._id = element.value
+                break
+            case "bio":
+                result.bio = {$regex: new RegExp(element.value.toLowerCase(), "i")}
+                break
+            default:
+                break
+        }
     }
     return result
 }
 
-function getSortQuery(sort: {value: string, field: string}) {
+function getSortQuery(sort: FieldInput) {
     let result = {}
     if (!sort) {
         return result
@@ -62,7 +71,7 @@ function getSortQuery(sort: {value: string, field: string}) {
 
 
 let resolver = {
-    people: async (args: {page: number, search: {value: string, field: string}, sort: {value: string, field: string}}) => {
+    people: async (args: {page: number, search: FieldInput[], sort: FieldInput}) => {
         try {
             let people
             if (args.page){
@@ -78,7 +87,23 @@ let resolver = {
         }
     },
 
-    person: async (args: {search: {value: string, field: string}}) => {
+    generalPeopleInfo: async (args: {search: FieldInput[], distinct: string}) => {
+        try {
+            let distinct: string[] = []
+            let size = 0
+            if (args.distinct) {
+                distinct = await Person.distinct(args.distinct)
+            }
+            if (args.search) {
+                size = await Person.count(getSearchQuery(args.search))
+            }
+            return {size: size, distinct: distinct}
+        } catch (err) {
+            throw err
+        }
+    },
+
+    person: async (args: {search: FieldInput[]}) => {
         try {
             let person = await Person.findOne(getSearchQuery(args.search))
             if (!person) {
