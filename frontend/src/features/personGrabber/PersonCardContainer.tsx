@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import fetchGrabber from "../_helpers/fetchGrabber";
+import fetchGrabber from "../../_helpers/fetchGrabber";
+import { useAppDispatch, useAppSelector } from '../../hooks'
 
 
 // denne skal represemtere data basert på query.
@@ -24,11 +25,7 @@ function PersonCardContainer() {
     const [data, setData] = React.useState<dateInterface[]>()
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);   
-        // må nå si ifra til backend om den rangen vi vil ha data fra 
-        // for enkelthetens skyld så sier vi kun 1 card per page for testing.
     };
-
-
 
     useEffect(() => {
         let queryBody = {

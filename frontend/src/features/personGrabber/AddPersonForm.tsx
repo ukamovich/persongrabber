@@ -1,5 +1,5 @@
 import "react-bootstrap";
-import App from './../App';
+import App from '../../App';
 
 function AddPersonForm() {
     return (
