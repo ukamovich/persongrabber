@@ -1,24 +1,12 @@
-import * as React from 'react';
 import { createTheme } from '@mui/material/styles'
-
-
-export const whiteTheme = createTheme({
-
-  palette: {
-    text: {
-      primary: "white",
-    }
-  }
-});
+import { padding } from '@mui/system';
 
 
 export const paginationTheme = createTheme({
   palette: {
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
+      main: '#19D5C6',
+      contrastText: 'fff',
     },
   },
 
@@ -35,24 +23,40 @@ export const paginationTheme = createTheme({
 });
 
 
-export const textfieldTheme = createTheme({
+
+export const whiteTheme = createTheme({
   components: {
-
-    MuiTextField: {
+    MuiInputBase: {
       styleOverrides: {
-        
-        root: {
-          color: "white",
-          
-          input: {
-            color: "white",
-
-          }
-        },
+        input: {
+          background: "white",
+        }
       },
     },
   },
 });
+
+
+
+export const MenuItemTheme = createTheme({
+  components: {
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+
+          backgroundColor: "white",
+
+        }
+
+       
+       
+      },
+    },
+  },
+});
+
+
+
 
 
 
