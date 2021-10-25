@@ -7,7 +7,7 @@ interface FieldInput {
     field: string
 }
 
-const pageSize: number = 3
+const pageSize: number = 20
 
 function getSearchQuery(search: FieldInput[]) {
     let result: {[k:string]: any} = {}

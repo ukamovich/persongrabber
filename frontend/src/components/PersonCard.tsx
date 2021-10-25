@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import fetchGrabber from "../_helpers/fetchGrabber";
 import './personcard.css';
 
@@ -45,7 +45,7 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
     const getGenderImage = (): string => {
         if (gender === "Male") {
             return "https://cdn-icons-png.flaticon.com/512/1536/1536865.png";
-        } else if(gender === "Female") {
+        } else if (gender === "Female") {
             return "https://cdn-icons-png.flaticon.com/512/1536/1536867.png";
         }
         else {
@@ -56,14 +56,12 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     useEffect(() => {
         const checkIfClickedOutside = (event: any) => {
-            
+            console.log(event)
             if (isOpen && isHovering) {
                 setIsOpen(false)
             }
         }
-
         document.addEventListener("mousedown", checkIfClickedOutside)
-
         return () => {
             document.removeEventListener("mousedown", checkIfClickedOutside)
         }
@@ -91,7 +89,7 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     const clickHandler = () => {
         if (isOpen) {
-            console.log("Sometihn")
+            return
         } else {
             getPersonData()
             setIsOpen(true)
@@ -101,31 +99,44 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
     const hovering = () => {
 
         if (isOpen) {
-            console.log(data)
             return (
-                <header className = "hovering">
-                    <img className="card-img-top" src= {getGenderImage()} alt="Card" />
+                <header className="open">
+                    <img className="card-img-top" src={getGenderImage()} alt="Card" />
                     <div className="card-body">
                         <h1 className="card-title" style={{ fontSize: "25px" }}>{name}</h1>
                         {/* <h4 className="card-text"></h4> */}
                         <h4 className="card-text">Age: {getAge(birthdate)}</h4>
-
-                        
-
                         <p className="card-text">Gender: {gender}</p>
-                        <p>Email: {data && data.email}</p>
-                        <p>About: {data && data.bio}</p>
-                        <p>About: {data && data.cars.map(car => {return car.name + " " + car.price})}</p>
-
+                        <p><b>Email:</b> {data && data.email}</p>
+                        <p><b>About:</b> {data && data.bio}</p>
+                        {data && data.cars.length > 0 &&
+                            <div>
+                                <p><b>Cars:</b></p>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name:</td>
+                                            <td>Price:</td>
+                                        </tr>
+                                        {data && data.cars.map(el => {
+                                            return (
+                                                <tr key={el.name}>
+                                                    <td>{el.name}</td>
+                                                    <td>{el.price}</td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
                     </div>
                 </header>
             )
         } else {
-
-
             return (
-                <header className ="notHovering">
-                    <img className="card-img-top" src= {getGenderImage()} alt="Card" />
+                <header className="closed">
+                    <img className="card-img-top" src={getGenderImage()} alt="Card" />
                     <div className="card-body">
                         <h1 className="card-title" style={{ fontSize: "25px" }}>{name}</h1>
                         {/* <h4 className="card-text"></h4> */}
@@ -149,7 +160,11 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
 
         // </div>
-        <div className="profile-card" style={{ width: "170px" }} onClick={clickHandler} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}  >
+        <div className="profile-card" 
+            style={{ width: "170px", cursor: "pointer", border: isHovering ? "2px solid #63D471" : 0 }} 
+            onClick={clickHandler} 
+            onMouseEnter={() => setIsHovering(true)} 
+            onMouseLeave={() => setIsHovering(false)}  >
             {hovering()}
         </div>
     );

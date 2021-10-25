@@ -1,4 +1,4 @@
-.hovering {
+.open {
     width: 300px;
     z-index: 2;
     position: absolute;
@@ -6,17 +6,16 @@
     border-color: #63D471;
     border-width: 3px;
     border-style: solid;
-
 }
 
-.notHovering > img {
-    width: 150px;
-    height: 150px;
-}
-.notHovering > img {
-    width: 150px;
-    height: 150px;
+.closed > img {
+    width: 100%;
 }
 
+td {
+    padding: 0 15px;
+}
 
-
+.profile-card {
+    margin: 5px;
+}

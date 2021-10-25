@@ -6,8 +6,8 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import fetchGrabber from "../_helpers/fetchGrabber";
 import Box from '@mui/material/Box';
-import {ThemeProvider} from '@mui/material/styles';
-import {paginationTheme} from "./Themes";
+import { ThemeProvider } from '@mui/material/styles';
+import { paginationTheme } from "./Themes";
 
 const port = 3001 || process.env.REACT_APP_BACKEND_PORT
 const backendURL = `http://localhost:${port}/graphql`
@@ -62,7 +62,7 @@ function PersonCardContainer() {
                 }
             `
         }
-        fetchGrabber(queryBody, backendURL).then((res)=>{
+        fetchGrabber(queryBody, backendURL).then((res) => {
             setPages(Math.ceil(res.data.generalPeopleInfo.size / pageSize))
         })
     }
@@ -81,7 +81,7 @@ function PersonCardContainer() {
                 }
             `
         }
-        fetchGrabber(query, backendURL).then((res)=>{
+        fetchGrabber(query, backendURL).then((res) => {
             setGenders(res.data.generalPeopleInfo.distinct)
         })
 
@@ -96,8 +96,8 @@ function PersonCardContainer() {
 
         <div className="container">
 
-            <OptionsBar 
-                setSearch={setSearch} 
+            <OptionsBar
+                setSearch={setSearch}
                 handleSearch={handleSearch}
                 setSearchOption={setSearchOption}
                 setGender={setGender}
@@ -105,7 +105,7 @@ function PersonCardContainer() {
                 genders={genders}
                 searchOption={searchOption}
                 sort={sort}
-                setSort={setSort}/>
+                setSort={setSort} />
             <div className="row">
                 {data && data.map(el => {
                     return <PersonCard _id={el._id} name={el.first_name + " " + el.last_name} birthdate={el.birthdate} gender={el.gender} key={el._id}></PersonCard>
@@ -116,8 +116,8 @@ function PersonCardContainer() {
             <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, bgcolor: 'red.300', borderColor: "white" }}>
                 <Box sx={{ p: 5, order: 2, bgcolor: 'white.300' }}>
                     <Stack spacing={4}>
-                    <ThemeProvider theme={paginationTheme}>
-                        <Pagination count={pages} page={currentPage} onChange={handleChange} variant="outlined" shape="rounded" size="large" color="secondary" />
+                        <ThemeProvider theme={paginationTheme}>
+                            <Pagination count={pages} page={currentPage} onChange={handleChange} variant="outlined" shape="rounded" size="large" color="secondary" />
                         </ThemeProvider>
                     </Stack>
                 </Box>
