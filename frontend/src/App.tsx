@@ -1,4 +1,3 @@
-import './App.css';
 import "bootstrap/dist/css/bootstrap.css";
 import "./features/personGrabber/validation";
 
@@ -11,18 +10,16 @@ import Navbar from './features/Navbar';
 function App() {
 
   return (
-    <div className="App">
           <Router>
-            <Navbar />'
+            <Navbar />
             <PageWrapper>
               <Switch>
-                <Route path='/Homepage' exact component={PersonCardContainer} />
+                <Route path='/' exact component={PersonCardContainer} />
                 {/* <Route path='/Addperson' component={Addperson} />
                 <Route path='/Addcar' component={Addcar} /> */}
               </Switch>
             </PageWrapper>
           </Router>           
-    </div>
   )}
 
 export default App;
