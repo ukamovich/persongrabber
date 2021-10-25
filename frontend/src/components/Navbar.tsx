@@ -12,7 +12,7 @@ return (
 	<Nav>
 		<Bars />
 		<NavMenu>
-		<NavLink to='/Homepage'>
+		<NavLink to='/'>
 			Person-Grabber
 		</NavLink>
 
