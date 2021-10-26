@@ -8,6 +8,9 @@ import fetchGrabber from "../_helpers/fetchGrabber";
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
 import { mainTheme } from "./Themes";
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 const port = 3001 || process.env.REACT_APP_BACKEND_PORT
 const backendURL = `http://localhost:${port}/graphql`
@@ -91,6 +94,10 @@ function PersonCardContainer() {
         handleSearch()
     }, [currentPage, sort])
 
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
     return (
         <div className="container">
             <OptionsBar
@@ -110,11 +117,12 @@ function PersonCardContainer() {
             </div>
 
 
-            <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, bgcolor: 'red.300', borderColor: "white" }}>
-                <Box sx={{ p: 5, order: 2, bgcolor: 'white.300' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: 1}}>
+                <Box>
                     <Stack spacing={4}>
                         <ThemeProvider theme={mainTheme}>
-                            <Pagination count={pages} page={currentPage} onChange={handleChange} variant="outlined" shape="rounded" size="large" color="secondary" />
+                            <Pagination count={pages} page={currentPage} onChange={handleChange} variant="outlined" shape="rounded" color="secondary"
+                            size = {matches ? "large" : "small"} />
                         </ThemeProvider>
                     </Stack>
                 </Box>

@@ -1,12 +1,20 @@
-/* .open {
-    width: 300px;
-    z-index: 2;
-    position: absolute;
+.open {
+    width: 450px;
+    position: fixed;
     background-color: #282c34;
     border-color: #63D471;
     border-width: 3px;
     border-style: solid;
-} */
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-img-top {
+    width: 350px;
+    
+}
 
 .closed > img {
     width: 100%;
@@ -18,4 +26,29 @@ td {
 
 .profile-card {
     margin: 5px;
+}
+
+
+/* -----------------Phone---------------------- */
+@media only screen and (max-width: 800px) {
+
+    .open {
+
+        width: 300px;
+        position: fixed;
+        background-color: #282c34;
+        border-color: #63D471;
+        border-width: 3px;
+        border-style: solid;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        
+    }
+
+    .card-img-top {
+        width: 90px;
+    }
+  
 }

@@ -1,5 +1,3 @@
-import React from "react"
-
 import { SelectChangeEvent } from '@mui/material/Select';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -15,6 +13,8 @@ import {
 } from '@mui/material';
 import { mainTheme } from "./Themes";
 import { ThemeProvider } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 interface OptionProps {
     setSearch: (value: string) => void,
@@ -30,6 +30,8 @@ interface OptionProps {
 
 function OptionsBar(props: OptionProps) {
 
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
     const handleSearchOptionChange = (event: SelectChangeEvent) => {
         props.setSearchOption(event.target.value);
@@ -55,7 +57,8 @@ function OptionsBar(props: OptionProps) {
                     borderColor: "white" 
                 }}>
                     <Box>
-                        <TextField id="filled-basic" label="Search" variant="filled" onChange={event => props.setSearch(event.target.value)} />
+                        <TextField id="filled-basic" label="Search" variant="filled" onChange={event => props.setSearch(event.target.value)} 
+                        size = {matches ? "small" : "medium"}/>
                     </Box>
                     <Box>
                         <FormControl variant="filled" sx={{color: 'third' }}>
@@ -74,7 +77,7 @@ function OptionsBar(props: OptionProps) {
                         </FormControl>
                     </Box>
                     <Box sx={{ p: 1 }}>
-                        <FormControl variant="filled" sx={{ color: 'third' }}>
+                        <FormControl variant="filled">
                             <InputLabel>Set gender</InputLabel>
                             <Select
                                 labelId="demo-simple-select-autowidth-label"
@@ -92,7 +95,9 @@ function OptionsBar(props: OptionProps) {
                         </FormControl>
                     </Box>
                     <Box>
-                        <Button variant="contained" onClick={() => props.handleSearch(true)}>Search</Button>
+                        <Button variant="contained" onClick={() => props.handleSearch(true)}
+                        size = {matches ? "small" : "medium"}>
+                            Search</Button>
                     </Box>
 
                     <Box>

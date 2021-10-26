@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState, useEffect } from 'react';
 import fetchGrabber from "../_helpers/fetchGrabber";
+import {Box} from '@mui/material';
 import './styles/card.css';
 
 interface PersonProps {
@@ -52,7 +53,7 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
     const [isHovering, setIsHovering] = useState(false);
     const [isOpen, setIsOpen] = useState(false)
     const [data, setData] = useState<DataInterface>()
-
+    
     const getGenderImage = (): string => {
         if (gender === "Male") {
             return "https://cdn-icons-png.flaticon.com/512/1536/1536865.png";
@@ -98,6 +99,7 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
         })
     }
 
+
     const clickHandler = () => {
         if (isOpen) {
             return
@@ -111,11 +113,13 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
         if (isOpen) {
             return (
-                <header className="open">
-                    <img className="card-img-top" src={getGenderImage()} alt="Card" />
+                <div className="open">
+                     <Box sx={{ display: 'flex', justifyContent: 'center', p: 2}}>
+                        <img className="card-img-top" src={getGenderImage()} alt="Card" />
+                        </Box>
                     <div className="card-body">
-                        <h1 className="card-title" style={{ fontSize: "25px" }}>{name}</h1>
-                        <h4 className="card-text">Age: {getAge(birthdate)}</h4>
+                        <h6 className="card-title" style={{ fontSize: "15px" }}>{name}</h6>
+                        <p className="card-text">Age: {getAge(birthdate)}</p>
                         <p className="card-text">Gender: {gender}</p>
                         <p><b>Email:</b> {data && data.email}</p>
                         <p><b>About:</b> {data && data.bio}</p>
@@ -141,15 +145,15 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
                             </div>
                         }
                     </div>
-                </header>
+                </div>
             )
         } else {
             return (
                 <header className="closed">
                     <img className="card-img-top" src={getGenderImage()} alt="Card" />
                     <div className="card-body">
-                        <h1 className="card-title" style={{ fontSize: "25px" }}>{name}</h1>
-                        <h4 className="card-text">Age: {getAge(birthdate)}</h4>
+                        <h1 className="card-title" style={{ fontSize: "15px" }}>{name}</h1>
+                        <p className="card-text">Age: {getAge(birthdate)}</p>
                         <p className="card-text">Gender: {gender}</p>
                     </div>
                 </header>
