@@ -18,8 +18,8 @@ function App() {
         <PageWrapper>
           <Switch>
             <Route path='/' exact component={PersonCardContainer} />
-            <Route path='/Addperson' component={AddPersonPage} />
-            <Route path='/Addcar' component={AddCarPage} />
+            <Route path='/add-person' component={AddPersonPage} />
+            <Route path='/add-car' component={AddCarPage} />
           </Switch>
         </PageWrapper>
       </Router>
