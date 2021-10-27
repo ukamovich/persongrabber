@@ -10,11 +10,11 @@ import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setPage } from './grabberSlice'
 import PersonCard from "./PersonCard";
 import OptionsBar from "./OptionsBar"
-import fetchGrabber from "../../_helpers/fetchGrabber";
-import { paginationTheme } from "./Themes";
+import fetchGrabber, { backendURL } from "../../_helpers/fetchGrabber";
+import { mainTheme } from "./styles/Themes";
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-const port = 3001 || process.env.REACT_APP_BACKEND_PORT
-const backendURL = `http://localhost:${port}/graphql`
 const pageSize = 20
 
 interface dateInterface {
@@ -104,11 +104,14 @@ function PersonCardContainer() {
     useEffect(() => {
         handleSearch()
         dispatch(setPage(currentPage))
+        window.scrollTo(0,0)
     }, [currentPage, sort])
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
     return (
         <div className="container">
-
             <OptionsBar
                 setSearch={setSearch}
                 handleSearch={handleSearch}
@@ -119,18 +122,19 @@ function PersonCardContainer() {
                 searchOption={searchOption}
                 sort={sort}
                 setSort={setSort} />
-            <div className="row">
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: 1, flexFlow: 'row wrap'}}>
                 {data && data.map(el => {
                     return <PersonCard _id={el._id} name={el.first_name + " " + el.last_name} birthdate={el.birthdate} gender={el.gender} key={el._id}></PersonCard>
                 })}
-            </div>
+            </Box>
 
 
-            <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, bgcolor: 'red.300', borderColor: "white" }}>
-                <Box sx={{ p: 5, order: 2, bgcolor: 'white.300' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: 1}}>
+                <Box>
                     <Stack spacing={4}>
-                        <ThemeProvider theme={paginationTheme}>
-                            <Pagination count={pages} page={currentPage} onChange={handleChange} variant="outlined" shape="rounded" size="large" color="secondary" />
+                        <ThemeProvider theme={mainTheme}>
+                            <Pagination count={pages} page={currentPage} onChange={handleChange} variant="outlined" shape="rounded" color="secondary"
+                            size = {matches ? "large" : "small"} />
                         </ThemeProvider>
                     </Stack>
                 </Box>

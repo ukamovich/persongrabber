@@ -1,0 +1,40 @@
+.open-container {
+    width: 40%;
+    border: 2px solid #63D471;
+
+}
+
+.card-img-top {
+    width: 100%; 
+}
+
+.closed-container {
+    width: 23%;
+    cursor: pointer;
+}
+
+td {
+    padding: 0 15px;
+}
+
+.profile-card {
+    margin: 5px;
+}
+
+.profile-card:hover {
+    border: 2px solid #63D471;
+}
+
+
+/* -----------------Phone---------------------- */
+@media only screen and (max-width: 800px) {
+
+    .open-container {
+        width: 80%;
+    }
+
+    .closed-container {
+        width: 70%;
+    }
+  
+}

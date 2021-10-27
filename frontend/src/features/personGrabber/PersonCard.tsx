@@ -1,7 +1,8 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState, useEffect } from 'react';
-import fetchGrabber from "../../_helpers/fetchGrabber";
-import './personcard.css';
+import fetchGrabber, { backendURL } from "../../_helpers/fetchGrabber";
+import {Box} from '@mui/material';
+import './styles/card.css';
 
 interface PersonProps {
     name: string;
@@ -18,9 +19,6 @@ interface DataInterface {
         price: number;
     }]
 }
-
-const port = 3001 || process.env.REACT_APP_BACKEND_PORT
-const backendURL = `http://localhost:${port}/graphql`
 
 //Source: https://www.codegrepper.com/code-examples/javascript/javascript+get+age+from+date
 function getAge(dateString: string) {
@@ -56,13 +54,13 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     useEffect(() => {
         const checkIfClickedOutside = (event: any) => {
-            if (isOpen && isHovering) {
+            if (isOpen) {
                 setIsOpen(false)
             }
         }
-        document.addEventListener("mousedown", checkIfClickedOutside)
+        document.addEventListener("mouseup", checkIfClickedOutside, true)
         return () => {
-            document.removeEventListener("mousedown", checkIfClickedOutside)
+            document.removeEventListener("mouseup", checkIfClickedOutside, true)
         }
     }, [isOpen, isHovering])
 
@@ -86,9 +84,10 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
         })
     }
 
+
     const clickHandler = () => {
         if (isOpen) {
-            return
+            // setIsOpen(false)
         } else {
             getPersonData()
             setIsOpen(true)
@@ -99,12 +98,14 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
         if (isOpen) {
             return (
-                <header className="open">
-                    <img className="card-img-top" src={getGenderImage()} alt="Card" />
+                <div className="open">
+                    <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
+                        <img className="card-img-top" src={getGenderImage()} alt="Card" />
+                    </Box>
                     <div className="card-body">
-                        <h1 className="card-title" style={{ fontSize: "25px" }}>{name}</h1>
-                        <h4 className="card-text">Age: {getAge(birthdate)}</h4>
-                        <p className="card-text">Gender: {gender}</p>
+                        <h6 className="card-title" style={{ fontSize: "20px" }}>{name}</h6>
+                        <p className="card-text"><b>Age:</b> {getAge(birthdate)}</p>
+                        <p className="card-text"><b>Gender:</b> {gender}</p>
                         <p><b>Id:</b> {_id}</p>
                         <p><b>Email:</b> {data && data.email}</p>
                         <p><b>About:</b> {data && data.bio}</p>
@@ -130,19 +131,16 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
                             </div>
                         }
                     </div>
-                </header>
+                </div>
             )
         } else {
             return (
                 <header className="closed">
                     <img className="card-img-top" src={getGenderImage()} alt="Card" />
                     <div className="card-body">
-                        <h1 className="card-title" style={{ fontSize: "25px" }}>{name}</h1>
-                        {/* <h4 className="card-text"></h4> */}
-                        <h4 className="card-text">Age: {getAge(birthdate)}</h4>
-
+                        <h1 className="card-title" style={{ fontSize: "15px" }}>{name}</h1>
+                        <p className="card-text">Age: {getAge(birthdate)}</p>
                         <p className="card-text">Gender: {gender}</p>
-
                     </div>
                 </header>
             )
@@ -153,17 +151,10 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     return (
 
-        // <div className="profile-card" style={{ width: "170px" }} onMouseEnter={() => setIsHovering(true)}
-        //     onMouseLeave={() => setIsHovering(false)} >
-        //     {hovering()}
-
-
-        // </div>
-        <div className="profile-card" 
-            style={{ width: "170px", cursor: "pointer", border: isHovering ? "2px solid #63D471" : 0 }} 
-            onClick={clickHandler} 
-            onMouseEnter={() => setIsHovering(true)} 
-            onMouseLeave={() => setIsHovering(false)}  >
+        <div className={`profile-card ${isOpen ? "open-container" : "closed-container"}`}
+            onClick={clickHandler}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}>
             {hovering()}
         </div>
     );
