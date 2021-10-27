@@ -165,8 +165,7 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     return (
 
-        <div className="profile-card" 
-            style={isOpen ? openCss : closedCss} 
+        <div className={`profile-card ${isOpen ? "open-container" : "closed-container"}`} 
             onClick={clickHandler} 
             onMouseEnter={() => setIsHovering(true)} 
             onMouseLeave={() => setIsHovering(false)}>

@@ -1,23 +1,22 @@
-.open {
-    width: 450px;
+.open-container {
+    width: 40%;
+    border: 2px solid #63D471;
+    /* width: 40%;
     position: fixed;
     background-color: #282c34;
-    border-color: #63D471;
-    border-width: 3px;
-    border-style: solid;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    z-index: 100; */
 }
 
 .card-img-top {
-    width: 350px;
-    
+    width: 100%; 
 }
 
-.closed > img {
-    width: 100%;
+.closed-container {
+    width: 23%;
 }
 
 td {
@@ -28,14 +27,18 @@ td {
     margin: 5px;
 }
 
+.profile-card:hover {
+    border: 2px solid #63D471;
+}
+
 
 /* -----------------Phone---------------------- */
 @media only screen and (max-width: 800px) {
 
-    .open {
+    .open-container {
 
         width: 80%;
-        position: fixed;
+        /* position: fixed;
         background-color: #282c34;
         border-color: #63D471;
         border-width: 3px;
@@ -43,17 +46,12 @@ td {
         top: 50%;
         left: 50%;
         margin-right: -50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); */
         
     }
 
-    .profile-card {
-        width: 50%;
-    }
-
-
-    .card-img-top {
-        width: 90px;
+    .closed-container {
+        width: 70%;
     }
   
 }
