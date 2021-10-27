@@ -1,4 +1,5 @@
 # About the webpage
+_PersonGrapper_ is an application that diplays information about people stored in a database. Each person has the following attributes: Forname, lastname, gender, age, about and cars. The main functionality of the application is embedded in the search-bar which includes different tools to perform filtering on the search. To perform a filtering, the user can choose to filter on Lastname, Forname or Gender. The portrait of the person reflects wheter the person is male, female or neither. A button that sorts the resulting persons in descending or ascending order according to age has also been included diplayed as an upward or downward arrow. Lastly, _PersonGrapper_ has functionality for generating new persons or cars and add this information to the database. 
 
 
 # GraphQL & API
@@ -18,49 +19,26 @@ In turn, Redux is inspired by the concepts of functional programming, frequently
 
 In Redux, the whole global state of an app is stored in an object tree inside a single store. In order to change the state tree, an action ( an object that describes “what happened”) must be created and dispatched to the store. A special function - reducer - returns a new state, based on the old state and the action.
 
-**!!! Describe Redux in the app!!!**
+**!!! Describe Redux in our app!!!**
 
 # UI components and libraries
-We have mainly used components from the [MUI-library](https://mui.com/). The library has a wide variety of components which are easy to implement in the design and that’s why we sticked with this library throughout the project. Another great advantage of the MUI-components is that they offer inline styling which makes it more convenient to change the component regarding mediaQueries or just CSS. As an example, we were able to reduce the amount of `<div>`-tags due to the `<Box>` component since we can perform CSS inline instead of creating a separate CSS-file for styling the `<div>`-tag.
+We have mainly used components from the [MUI-library](https://mui.com/). The library has a wide variety of components which are easy to implement in the design and that’s why we sticked with this library throughout the project. Another great advantage of the MUI-components is that they offer inline styling which makes it more convenient to change the component regarding mediaQueries or just CSS. As an example, we were able to reduce the amount of div-tags due to the Box-component since we can perform CSS inline instead of creating a separate CSS-file for styling the div-tag.
 
 When the inline styling were not enough to alter the component the way we wanted, we used ThemeProvider and UseTheme to style the component in a specific way by creating a separate component which we named Themes.tsx.
 
 # Universal design
 After reviewing the [guidance for universal design for webpages](https://www.uutilsynet.no/nettsteder/losningsforslag-nettsider/36), we picked and implemented the most relevant and applicable, in our subjective opinion, requirements on our page:
 
-[_Pictures and graphics_](https://www.uutilsynet.no/regelverk/bilder-og-grafikk/205) <br>
+[_Pictures and graphics_](https://www.uutilsynet.no/regelverk/bilder-og-grafikk/205)
 Profile pictures play a significant part on our single-page application. The pictures we use are just decorative and contribute to the graphical design of the page. Thus, following the requirement for [decorative pictures](https://www.uutilsynet.no/regelverk/bilder-og-grafikk/205), we keep the alt-attribute empty. Also, we complement each profile picture with a name, age, and gender, which provides a descriptive identification of each person.
 
-[_Colors_](https://www.uutilsynet.no/regelverk/bruk-av-farger/206) and [_contrast_](https://www.uutilsynet.no/wcag-standarden/kontrast/48) <br>
+[_Colors_](https://www.uutilsynet.no/regelverk/bruk-av-farger/206) and [_contrast_](https://www.uutilsynet.no/wcag-standarden/kontrast/48)
 Firstly, we have highlighted the text on the elements that takes the user to the three pages making up the application. Secondly, we have tried to avoid using color combination that is challenging for users that are color blind like green and red. Even though the navbar is green and the color of the profile picture on some persons are red, they are not placed directly together so it won’t be an issue to separate the two. Lastly, the layout is mainly built on the combination of dark and light colors which makes it easier to distinguish content on the page.
 
-[_Clickable elements(Navigation)_](https://www.uutilsynet.no/regelverk/klikkeflate-navigasjon/211) <br>
+[_Clickable elements(Navigation)_](https://www.uutilsynet.no/regelverk/klikkeflate-navigasjon/211)
 This requirement is about users that lack precision ability. Our solution takes this matter into account since we are using relatively large-scaled images on both small- and large-scale devices which the user can click on to view a person in detail. Also, the picture of the person is being zoomed in a little bit with a border around it, making it even more distinct and easier to click on for the user. In addition, we have kept the tools regarding searching relatively large so that this won’t be a challenge for users that lack precision ability.
 
 **!!! Additional; discuss the size of the pagination buttons since they are possible too small for users that lacks precision ability.!!!**
 
 
 # Testing
-
-**Test Scenarios**
-<details>
-  <summary markdown="span">Scenario 1</summary>
-  Description of steps
-</details>
-<br>
-<details>
-  <summary markdown="span">Scenario 2</summary>
-  Description of steps
-</details>
-<br>
-<details>
-  <summary markdown="span">Scenario 3</summary>
-  Description of steps
-</details>
-
-
-
-
-
-
-
