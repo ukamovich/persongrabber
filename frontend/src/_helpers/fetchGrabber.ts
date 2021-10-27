@@ -15,4 +15,9 @@ async function fetchGrabber(queryBody: {query: String} , url: string) {
     return result.json()
 }
 
+const port = 3001 || process.env.REACT_APP_BACKEND_PORT
+const backendURL = `http://localhost:${port}/graphql`
+
+export {backendURL}
+
 export default fetchGrabber

@@ -95,7 +95,7 @@ function AddPersonPage() {
 
   return (
 
-    <form className="requires-validation" noValidate onSubmit={submitForm} >
+    <form onSubmit={submitForm} style={{textAlign: "center"}}>
       <h3>Add a new person <span className="label label-default"></span></h3>
       <div className="col-md-12">
         <input type="text" className="form-control mt-3" required placeholder="First Name" name="first_name" onChange={handleChange} />
@@ -120,6 +120,9 @@ function AddPersonPage() {
       </div>
 
       <button type="submit" id="submit" className="btn btn-primary mt-3 mx-3" >Submit</button>
+      {id && (
+        <p>New person id: {id}</p>
+      )}
     </form>
   );
 }

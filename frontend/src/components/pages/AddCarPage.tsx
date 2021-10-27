@@ -1,54 +1,94 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import fetchGrabber, { backendURL } from "../../_helpers/fetchGrabber";
 
+interface CarInterface {
+  name: String
+  company: String
+  production_year: number
+  price: number
+  owner: string
+}
+
+const initialCar: CarInterface = {
+  name: "",
+  company: "",
+  production_year: 0,
+  price: 0,
+  owner: ""
+}
+
+function validateForm(car: CarInterface): boolean {
+  for (let [key, value] of Object.entries(car)) {
+    if (!value) {
+      alert(`${key} cannot be empty!`)
+      return false
+    }
+  }
+  return true
+}
 
 export function AddCarPage() {
 
+  const [car, setCar] = useState<CarInterface>(initialCar)
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setCar({ ...car, [event.target.name]: event.target.value })
+  }
+
+
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    // Preventing the page from reloading
     event.preventDefault();
-    alert();
+
+    if (validateForm(car)) {
+      let queryBody = {
+        query: `
+          mutation {
+            createCar(data: {
+              name: "${car.name}"
+              company: "${car.company}"
+              production_year: ${car.production_year}
+              price: ${car.price}
+              owner: "${car.owner}"
+            }) {
+              _id
+            }
+          }
+        `
+      }
+      fetchGrabber(queryBody, backendURL).then(res => {
+        alert("Success! New cars id is: " + res.data.createCar._id)
+        setCar(initialCar)
+      })
+    } else {
+      console.log("Err!")
+    }
   }
-    return (
-  
-      <form className="requires-validation" noValidate onSubmit={submitForm} >
-        <h3>Add a new car <span className="label label-default"></span></h3>
-          <div className="col-md-12">
-            <input type="text" className="form-control mt-3" required placeholder="Name of owner" name="name" />
-            <div className="invalid-feedback">Name field is empty</div>
-          </div>
-          <div className="col-md-12">
-            <input type="text" className="form-control mt-3" required placeholder="Reg number" name="name" />
-            <div className="invalid-feedback">Reg number field is empty</div>
-          </div>
-          <div className="col-md-12">
-            <input type="number" className="form-control mt-3" placeholder="Model year" name="age" />
-            <div className="invalid-feedback">Date field is empty</div>
-          </div>
-          <div className="form-group">
-            <select className="form-select mt-3" name="name" >
-              <option selected disabled value="">Car manufactorer</option>
-              <option value="male">Toyota</option>
-              <option value="female">Opel</option>
-              <option value="female">Volvo</option>
-              <option value="female">Saab</option>
-              <option value="female">Ferrari</option>
-              <option value="female">Koeningsegg</option>
-              <option value="female">Nissan</option>
-              <option value="female">Ford</option>
-              <option value="female">Volkswagen</option>
-            </select>
-          </div>
-          <div className="col-md-12">
-            <input type="text" className="form-control mt-3" placeholder="Car model" name="age" />
-            <div className="invalid-feedback">Car model field is empty</div>
-          </div>
-          <div className="col-md-12">
-            <textarea className="form-control mt-3" placeholder="Specifications" name="specs"></textarea>
-          </div>
-          
-        <div className="">
-          <button type="submit" id="submit" className="btn btn-primary mt-3 mx-3" >Add Person</button>
-          <button type="button" className="btn btn-primary mt-3">Switch</button>
-        </div>
-      </form>
-    );
-  }
+
+
+  return (
+
+    <form onSubmit={submitForm} style={{textAlign: "center"}}>
+      <h3>Add a new car <span className="label label-default"></span></h3>
+      <div className="col-md-12">
+        <input type="text" className="form-control mt-3" required placeholder="Car model" name="name" onChange={handleChange}/>
+      </div>
+      <div className="col-md-12">
+        <input type="text" className="form-control mt-3" placeholder="Manufactorer" name="company" onChange={handleChange}/>
+      </div>
+      <div className="col-md-12">
+        <input type="number" className="form-control mt-3" placeholder="Production year" name="production_year" onChange={handleChange}/>
+      </div>
+      <div className="col-md-12">
+        <input type="number" className="form-control mt-3" placeholder="Price" name="price" onChange={handleChange}/>
+      </div>
+      <div className="col-md-12">
+        <input type="text" className="form-control mt-3" placeholder="Owner ID" name="owner" onChange={handleChange}/>
+      </div>
+
+      <div className="">
+        <button type="submit" id="submit" className="btn btn-primary mt-3 mx-3" >Add car</button>
+      </div>
+    </form>
+  );
+}

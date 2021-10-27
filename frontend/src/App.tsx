@@ -1,6 +1,4 @@
 import "bootstrap/dist/css/bootstrap.css";
-import "./components/validation";
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import PageWrapper from './components/PageWrapper';
