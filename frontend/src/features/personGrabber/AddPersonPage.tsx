@@ -111,7 +111,7 @@ function AddPersonPage() {
       </div>
       <div className="form-group">
         <select className="form-select mt-3" name="gender" onChange={handleChange} >
-          <option selected disabled value="">Gender</option>
+          <option disabled value="">Gender</option>
           {genders && genders.map(el => {return <option value={el} key={el}>{el}</option>})}
         </select>
       </div>

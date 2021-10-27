@@ -31,10 +31,6 @@ mongoose.connection.on("error", (err) => {
     throw err
 })
 
-// let temp = mongoose.connection.collections
-
-// console.log(temp)
-
 app.listen(port, () => {
     console.log(`Hosting on http://localhost:${port}`)
 })

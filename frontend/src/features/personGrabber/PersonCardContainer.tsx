@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+
 import "bootstrap/dist/css/bootstrap.css";
-import PersonCard from "./PersonCard";
-import OptionsBar from "./OptionsBar"
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import fetchGrabber from "../_helpers/fetchGrabber";
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
+
+import { useAppDispatch, useAppSelector } from '../../hooks'
+import { setPage } from './grabberSlice'
+import PersonCard from "./PersonCard";
+import OptionsBar from "./OptionsBar"
+import fetchGrabber from "../../_helpers/fetchGrabber";
 import { paginationTheme } from "./Themes";
 
 const port = 3001 || process.env.REACT_APP_BACKEND_PORT
@@ -23,6 +27,9 @@ interface dateInterface {
 
 function PersonCardContainer() {
 
+    const dispatch = useAppDispatch()
+    const page = useAppSelector((state) => state.page)
+
     const [pages, setPages] = useState(10);
     const [sort, setSort] = useState('desc');
     const [search, setSearch] = useState("");
@@ -32,9 +39,14 @@ function PersonCardContainer() {
     const [currentPage, setCurrentPage] = useState(1);
     const [data, setData] = useState<dateInterface[]>()
 
+    /**
+     * Handles search requests
+     * @param resetPage set page to 1 or not
+     */
     const handleSearch = (resetPage = false) => {
         if (resetPage) {
             setCurrentPage(1)
+            dispatch(setPage(1))
         }
         let queryBody = {
             query: `
@@ -71,29 +83,30 @@ function PersonCardContainer() {
         setCurrentPage(value);
     };
 
+    // On page load
     useEffect(() => {
         let query = {
             query: `
-                query {
-                    generalPeopleInfo(distinct: "gender") {
-                        distinct
-                    }
+            query {
+                generalPeopleInfo(distinct: "gender") {
+                    distinct
                 }
+            }
             `
         }
         fetchGrabber(query, backendURL).then((res) => {
             setGenders(res.data.generalPeopleInfo.distinct)
         })
-
+        
     }, [])
-
+    
+    // On selected page change or sort change
     useEffect(() => {
         handleSearch()
+        dispatch(setPage(currentPage))
     }, [currentPage, sort])
 
     return (
-
-
         <div className="container">
 
             <OptionsBar
@@ -124,15 +137,7 @@ function PersonCardContainer() {
             </Box>
 
         </div>
-
-
     );
-
-
 }
-
-
-
-
 
 export default PersonCardContainer;

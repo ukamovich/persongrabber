@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState, useEffect } from 'react';
-import fetchGrabber from "../_helpers/fetchGrabber";
+import fetchGrabber from "../../_helpers/fetchGrabber";
 import './personcard.css';
 
 interface PersonProps {
@@ -56,7 +56,6 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     useEffect(() => {
         const checkIfClickedOutside = (event: any) => {
-            console.log(event)
             if (isOpen && isHovering) {
                 setIsOpen(false)
             }
@@ -65,7 +64,7 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
         return () => {
             document.removeEventListener("mousedown", checkIfClickedOutside)
         }
-    }, [isOpen])
+    }, [isOpen, isHovering])
 
     const getPersonData = () => {
         let queryBody = {
@@ -104,9 +103,9 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
                     <img className="card-img-top" src={getGenderImage()} alt="Card" />
                     <div className="card-body">
                         <h1 className="card-title" style={{ fontSize: "25px" }}>{name}</h1>
-                        {/* <h4 className="card-text"></h4> */}
                         <h4 className="card-text">Age: {getAge(birthdate)}</h4>
                         <p className="card-text">Gender: {gender}</p>
+                        <p><b>Id:</b> {_id}</p>
                         <p><b>Email:</b> {data && data.email}</p>
                         <p><b>About:</b> {data && data.bio}</p>
                         {data && data.cars.length > 0 &&

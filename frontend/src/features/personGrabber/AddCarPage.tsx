@@ -27,7 +27,7 @@ function validateForm(car: CarInterface): boolean {
   return true
 }
 
-export function AddCarPage() {
+function AddCarPage() {
 
   const [car, setCar] = useState<CarInterface>(initialCar)
 
@@ -92,3 +92,5 @@ export function AddCarPage() {
     </form>
   );
 }
+
+export default AddCarPage
