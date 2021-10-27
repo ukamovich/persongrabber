@@ -18,10 +18,10 @@ In turn, Redux is inspired by the concepts of functional programming, frequently
 
 In Redux, the whole global state of an app is stored in an object tree inside a single store. In order to change the state tree, an action ( an object that describes “what happened”) must be created and dispatched to the store. A special function - reducer - returns a new state, based on the old state and the action.
 
-**!!! Describe Redux in our app!!!**
+**!!! Describe Redux in the app!!!**
 
 # UI components and libraries
-We have mainly used components from the [MUI-library](https://mui.com/). The library has a wide variety of components which are easy to implement in the design and that’s why we sticked with this library throughout the project. Another great advantage of the MUI-components is that they offer inline styling which makes it more convenient to change the component regarding mediaQueries or just CSS. As an example, we were able to reduce the amount of <div>-tags due to the <Box> component since we can perform CSS inline instead of creating a separate CSS-file for styling the <div>-tag.
+We have mainly used components from the [MUI-library](https://mui.com/). The library has a wide variety of components which are easy to implement in the design and that’s why we sticked with this library throughout the project. Another great advantage of the MUI-components is that they offer inline styling which makes it more convenient to change the component regarding mediaQueries or just CSS. As an example, we were able to reduce the amount of '<div>'-tags due to the '<Box>' component since we can perform CSS inline instead of creating a separate CSS-file for styling the '<div>'-tag.
 
 When the inline styling were not enough to alter the component the way we wanted, we used ThemeProvider and UseTheme to style the component in a specific way by creating a separate component which we named Themes.tsx.
 
