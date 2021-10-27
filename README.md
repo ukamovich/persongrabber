@@ -31,7 +31,7 @@ After reviewing the [guidance for universal design for webpages](https://www.uut
 [_Pictures and graphics_](https://www.uutilsynet.no/regelverk/bilder-og-grafikk/205)
 Profile pictures play a significant part on our single-page application. The pictures we use are just decorative and contribute to the graphical design of the page. Thus, following the requirement for [decorative pictures](https://www.uutilsynet.no/regelverk/bilder-og-grafikk/205), we keep the alt-attribute empty. Also, we complement each profile picture with a name, age, and gender, which provides a descriptive identification of each person.
 
-[_Colors](https://www.uutilsynet.no/regelverk/bruk-av-farger/206) and [contrast_](https://www.uutilsynet.no/wcag-standarden/kontrast/48)
+[_Colors_](https://www.uutilsynet.no/regelverk/bruk-av-farger/206) and [_contrast_](https://www.uutilsynet.no/wcag-standarden/kontrast/48)
 Firstly, we have highlighted the text on the elements that takes the user to the three pages making up the application. Secondly, we have tried to avoid using color combination that is challenging for users that are color blind like green and red. Even though the navbar is green and the color of the profile picture on some persons are red, they are not placed directly together so it won’t be an issue to separate the two. Lastly, the layout is mainly built on the combination of dark and light colors which makes it easier to distinguish content on the page.
 
 [_Clickable elements(Navigation)_](https://www.uutilsynet.no/regelverk/klikkeflate-navigasjon/211)
