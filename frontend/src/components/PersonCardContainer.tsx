@@ -110,11 +110,11 @@ function PersonCardContainer() {
                 searchOption={searchOption}
                 sort={sort}
                 setSort={setSort} />
-            <div className="row">
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: 1, flexFlow: 'row wrap'}}>
                 {data && data.map(el => {
                     return <PersonCard _id={el._id} name={el.first_name + " " + el.last_name} birthdate={el.birthdate} gender={el.gender} key={el._id}></PersonCard>
                 })}
-            </div>
+            </Box>
 
 
             <Box sx={{ display: 'flex', justifyContent: 'center', p: 1}}>
