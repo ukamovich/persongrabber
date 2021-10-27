@@ -1,5 +1,4 @@
-import { AppBar, IconButton, Link, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Link, Toolbar, Typography } from '@mui/material';
 import { navbarTheme } from './Themes';
 import React from 'react';
 
@@ -18,15 +17,6 @@ const Navbar = () => {
 				}}	
 			>
 				<Toolbar>
-					{/* <IconButton
-						size="large"
-						edge="start"
-						color="inherit"
-						aria-label="Open drawer"
-						sx={{ mr: 2 }}
-					>
-						<MenuIcon />
-					</IconButton> */}
 					<Typography
 						variant="h6"
 						noWrap

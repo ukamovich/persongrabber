@@ -20,17 +20,6 @@ interface DataInterface {
     }]
 }
 
-const openCss = {
-    width: "30%",
-    backgroundColor: "#282c34",
-    border: "3px solid #63D471"
-}
-
-const closedCss = {
-    width: "20%"
-
-}
-
 const port = 3001 || process.env.REACT_APP_BACKEND_PORT
 const backendURL = `http://localhost:${port}/graphql`
 
@@ -68,13 +57,13 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     useEffect(() => {
         const checkIfClickedOutside = (event: any) => {
-            if (isOpen && !isHovering) {
+            if (isOpen) {
                 setIsOpen(false)
             }
         }
-        document.addEventListener("mousedown", checkIfClickedOutside, true)
+        document.addEventListener("mouseup", checkIfClickedOutside, true)
         return () => {
-            document.removeEventListener("mousedown", checkIfClickedOutside, true)
+            document.removeEventListener("mouseup", checkIfClickedOutside, true)
         }
     }, [isOpen, isHovering])
 
@@ -102,7 +91,7 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
 
     const clickHandler = () => {
         if (isOpen) {
-            return
+            // setIsOpen(false)
         } else {
             getPersonData()
             setIsOpen(true)

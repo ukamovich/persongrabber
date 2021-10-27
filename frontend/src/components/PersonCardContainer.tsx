@@ -92,6 +92,7 @@ function PersonCardContainer() {
 
     useEffect(() => {
         handleSearch()
+        window.scrollTo(0,0)
     }, [currentPage, sort])
 
 
