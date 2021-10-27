@@ -41,3 +41,26 @@ This requirement is about users that lack precision ability. Our solution takes 
 
 
 # Testing
+
+**Test Scenarios**
+<details>
+  <summary markdown="span">Scenario 1</summary>
+  Description of steps
+</details>
+<br>
+<details>
+  <summary markdown="span">Scenario 2</summary>
+  Description of steps
+</details>
+<br>
+<details>
+  <summary markdown="span">Scenario 3</summary>
+  Description of steps
+</details>
+
+
+
+
+
+
+
