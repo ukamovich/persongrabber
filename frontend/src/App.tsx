@@ -18,7 +18,7 @@ function App() {
         <Navbar />
         <PageWrapper>
           <Switch>
-            <Route path='/' exact component={PersonCardContainer} />
+            <Route path='/project3' exact component={PersonCardContainer} />
             <Route path='/add-person' component={AddPersonPage} />
             <Route path='/add-car' component={AddCarPage} />
           </Switch>

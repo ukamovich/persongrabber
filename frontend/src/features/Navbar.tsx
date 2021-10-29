@@ -35,7 +35,7 @@ const Navbar = () => {
 						
 					>
 						<Link 
-							href="/"
+							href="/project3"
 							color="inherit" 
 							underline="none"
 							variant="h4"
@@ -46,14 +46,14 @@ const Navbar = () => {
 							Person grabber
 						</Link>
 						<Link 
-							href="/add-person"
+							href="/project3/add-person"
 							color="inherit" 
 							underline="none"
 						>
 							Add person
 						</Link>
 						<Link 
-							href="/add-car"
+							href="/project3/add-car"
 							color="inherit" 
 							underline="none"
 						>
