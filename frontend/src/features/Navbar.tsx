@@ -4,7 +4,10 @@ import React from 'react';
 
 import { ThemeProvider } from 'styled-components';
 
-
+/**
+ * Navbar element with page routing
+ * @returns 
+ */
 const Navbar = () => {
 	return (
 		<ThemeProvider theme={navbarTheme}>

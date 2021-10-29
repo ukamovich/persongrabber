@@ -76,7 +76,7 @@ function PersonCardContainer() {
             console.log(err)
         })
     }
-
+    
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
     };

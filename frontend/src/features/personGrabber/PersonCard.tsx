@@ -45,6 +45,7 @@ function PersonCard(props: PersonProps) {
     const [isOpen, setIsOpen] = useState(false)
     const [data, setData] = useState<DataInterface>()
 
+    // Chooses image based on image
     const getGenderImage = (): string => {
         if (props.gender === "Male") {
             return "https://cdn-icons-png.flaticon.com/512/1536/1536865.png";
@@ -57,6 +58,7 @@ function PersonCard(props: PersonProps) {
 
     }
 
+    // On state change
     useEffect(() => {
         const checkIfClickedOutside = (event: any) => {
             if (isOpen) {
@@ -69,6 +71,9 @@ function PersonCard(props: PersonProps) {
         }
     }, [isOpen, isHovering])
 
+    /**
+     * Gets missing information
+     */
     const getPersonData = () => {
         let queryBody = {
             query: `
@@ -90,10 +95,11 @@ function PersonCard(props: PersonProps) {
     }
 
 
+    /**
+     * Swappes between card states on click
+     */
     const clickHandler = () => {
-        if (isOpen) {
-            // setIsOpen(false)
-        } else {
+        if (!isOpen) {
             dispatch(addPerson(props.name))
             if (props.customPeopleData) {
                 setData(props.customPeopleData)
@@ -104,7 +110,11 @@ function PersonCard(props: PersonProps) {
         }
     }
 
-    const hovering = () => {
+    /**
+     * Chooses what type of card should be shown. Large one with extra info, or normal list version
+     * @returns 
+     */
+    const chooseCardSetting = () => {
 
         if (isOpen) {
             return (
@@ -165,7 +175,7 @@ function PersonCard(props: PersonProps) {
             onClick={clickHandler}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}>
-            {hovering()}
+            {chooseCardSetting()}
         </div>
     );
 }

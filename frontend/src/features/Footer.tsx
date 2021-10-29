@@ -2,7 +2,10 @@ import React from "react";
 import './personGrabber/styles/footer.css'
 import { useAppSelector } from '../hooks'
 
-
+/**
+ * Footer containing clicked people history
+ * @returns 
+ */
 function Footer() {
 
     const history = useAppSelector((state) => state.visited)
@@ -21,8 +24,8 @@ function Footer() {
         <footer className="footer" >
             <h4>Clicked people history:</h4>
             <ul style={{columns: columns(), listStyleType: "none"}}>
-                {history && history.map((el) => {
-                    return <li key={`Person: ${new Date().getTime()}`}>{el}</li>
+                {history && history.map((el, index) => {
+                    return <li key={`Person: ${index}`}>{el}</li>
                 })}
             </ul>
         </footer>

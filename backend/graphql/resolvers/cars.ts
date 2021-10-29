@@ -2,6 +2,8 @@ import Car, { CarInterface } from "../../models/car"
 import Person from "../../models/person"
 import { carTransformer } from "../transformers"
 
+
+// Resolvers for car queries / mutations
 let resolver = {
     cars: async () => {
         try {
