@@ -19,7 +19,7 @@ In turn, Redux is inspired by the concepts of functional programming, frequently
 
 In Redux, the whole global state of an app is stored in an object tree inside a single store. In order to change the state tree, an action ( an object that describes “what happened”) must be created and dispatched to the store. A special function - reducer - returns a new state, based on the old state and the action.
 
-We could not really find a useful application for the use of redux, but ended up settling with have a "clicked" history. What this means is that each time a person is viewed (their card is clicked), they are added to the visited redux state. This state is used to display a list of "clicked" people in the footer. We chose to put this list in the footer because it demonstrates how redux can be useful when passing data around in the hierarchy.
+We could not really find a useful application for the use of Redux, but ended up settling with have a "clicked" history. What this means is that each time a person is viewed (their card is clicked), they are added to the visited Redux state. This state is used to display a list of "clicked/visited" persons in the footer. We chose to put this list in the footer because it demonstrates how Redux can be useful when passing data around in the hierarchy.
 
 # UI components and libraries
 We have mainly used components from the [MUI-library](https://mui.com/). The library has a wide variety of components which are easy to implement in the design and that’s why we sticked with this library throughout the project. Another great advantage of the MUI-components is that they offer inline styling which makes it more convenient to change the component regarding mediaQueries or just CSS. As an example, we were able to reduce the amount of div-tags due to the Box-component since we can perform CSS inline instead of creating a separate CSS-file for styling the div-tag.
@@ -44,3 +44,27 @@ This requirement is about users that lack precision ability. Our solution takes 
 
 
 # Testing
+
+**End-to-End Testing**
+
+The objective of end-to-end testing is to test our app for a user’s point of view. The app is treated as a complete black box and the behaviour of the app’s flow is the result of user actions. We aim at testing Person Grabber using a prolonged sequence of step-by-step actions to cover the app’s flow ”from start to end”. Since we want a user to test our SPA, s/he will be manually executing tests using scenarios by rendering Person Grabber in a browser (e.g., Chrome or Firefox).
+
+_Scenario 1: Search, sort, and filter_
+1. Type appplication URL into the address bar to launch the Person Grabber page.
+2. Examine default sort setup (default: ascending order by age).
+3. Click on any person’s card. Check the person's info is displayed.
+4. Click on the arrow icon next to the ‘Search’ button to sort the list of persons.
+5. Search for a person(s) that contains a ‘jan’ word sequence in their first name.
+6. Search for a person(s) that contains a ‘ben’ word sequence in their last name.
+7. Search for a person(s) that contains a ‘ben’ word sequence in their last name and is a Male.
+8. Search for a person with person id: 617c14ecbfc0b0157478b923
+9. Search for all persons who are Bigender.
+
+_Scenario 2: Add person and car_
+1. Type appplication URL into the address bar to launch the Person Grabber page.
+2. Access ‘Add person’ subpage.
+3. Add a new person.
+4. Verify that the newly-added person can be found.
+5. Access ‘Add car’ subpage.
+6. Add a new car for a person named ‘Brynna Branch’ with id: 617c1a45554583c61718d81e
+7. Verify that the newly-added car is listed among the cars in the profile for Brynna Branch.
