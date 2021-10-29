@@ -22,6 +22,10 @@ interface PersonInterface {
   bio: string
 }
 
+/**
+ * Page for adding new persons
+ * @returns new page
+ */
 
 function AddPersonPage() {
 

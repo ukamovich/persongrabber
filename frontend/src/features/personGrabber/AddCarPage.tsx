@@ -17,6 +17,10 @@ const initialCar: CarInterface = {
   owner: ""
 }
 
+/**
+ * Page for adding new cars
+ * @returns new page
+ */
 function AddCarPage() {
 
   const [car, setCar] = useState<CarInterface>(initialCar)
