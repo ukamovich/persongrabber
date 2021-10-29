@@ -57,6 +57,7 @@ function AddPersonPage() {
     // Preventing the page from reloading
     event.preventDefault();
 
+    //Check validation all the input fields
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
           if (!form.checkValidity()) {
@@ -64,7 +65,6 @@ function AddPersonPage() {
             event.stopPropagation();
           }
           else {
-            console.log(person)
             let queryBody = {
               query: `
                 mutation {
@@ -83,8 +83,6 @@ function AddPersonPage() {
               `
             }
             fetchGrabber(queryBody, backendURL).then(res => {
-              console.log(res)
-              alert("Success! New persons id is: " + res.data.createPerson._id)
               setPerson(initialPerson)
               setId(res.data.createPerson._id)
             }).catch(err => {
@@ -127,11 +125,11 @@ function AddPersonPage() {
       </div>
       <div  className="invalid-feedback">Bio cant be empty</div>
 
-      <button type="submit" id="submit" className="btn btn-primary mt-3 mx-3" >Submit</button>
+      <button type="submit" id="submit" className="btn btn-primary mt-3 mx-3" >Add Person</button>
       {id && (
         <><div className="alert alert-success alert-dismissible d-flex align-items-center fade show mt-3">
           <i className="bi-check-circle-fill"></i>
-          <strong className="mx-2">Success!</strong> New person id: {id}
+          <strong className="mx-2">Success!</strong> New person id: <br/> {id}
         </div></>
       )}
     </form>

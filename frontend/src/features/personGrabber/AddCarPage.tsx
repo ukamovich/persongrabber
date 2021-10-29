@@ -20,6 +20,7 @@ const initialCar: CarInterface = {
 function AddCarPage() {
 
   const [car, setCar] = useState<CarInterface>(initialCar)
+  const [id, setId] = useState()
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setCar({ ...car, [event.target.name]: event.target.value })
@@ -33,6 +34,7 @@ function AddCarPage() {
     // Preventing the page from reloading
     event.preventDefault();
 
+    // Check validation on all input fields
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
           if (!form.checkValidity()) {
@@ -55,13 +57,11 @@ function AddCarPage() {
                 }
               `
             }
-            console.log(queryBody)
             fetchGrabber(queryBody, backendURL).then(res => {
-              console.log(res)
-              alert("Success! New cars id is: " + res.data.createCar._id)
               setCar(initialCar)
+              setId(res.data.createCar._id)
             }).catch(err => {
-              alert("You need a persons id!")
+              alert("You need a valid persons id!")
             })
           }
         }, false)
@@ -81,7 +81,7 @@ function AddCarPage() {
       </div>
       <div className="invalid-feedback">Please pick a car manufactorer</div>
       <div className="col-md-12">
-        <input value={isNaN(car.production_year) ? "" : car.production_year} type="number" required pattern="[0-9{4}]" min="1900" max="2022" className="form-control mt-3" placeholder="Production year" name="production_year" onChange={handleChange}/>
+        <input value={isNaN(car.production_year) ? "" : car.production_year} type="number" required pattern="[0-9{4}]" min="1900" max={`${new Date(Date.now()).getFullYear() + 1}`} className="form-control mt-3" placeholder="Production year" name="production_year" onChange={handleChange}/>
       </div>
       <div className="invalid-feedback">Production year on form YYYY</div>
       <div className="col-md-12">
@@ -92,9 +92,13 @@ function AddCarPage() {
         <input value={car.owner} type="text" required className="form-control mt-3" placeholder="Owner ID" name="owner" onChange={handleChange}/>
       </div>
       <div className="invalid-feedback">Enter an owner id</div>
-      <div className="">
-        <button type="submit" id="submit" className="btn btn-primary mt-3 mx-3" >Add car</button>
-      </div>
+      <button type="submit" id="submit" className="btn btn-primary mt-3 mx-3" >Add car</button>
+      {id && (
+        <><div className="alert alert-success alert-dismissible d-flex align-items-center fade show mt-3">
+          <i className="bi-check-circle-fill"></i>
+          <strong className="mx-2">Success!</strong> Car added to id: <br/> {id}
+        </div></>
+      )}
     </form>
   );
 }
