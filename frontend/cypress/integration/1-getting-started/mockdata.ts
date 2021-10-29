@@ -516,8 +516,45 @@ let searchForJanFemale = {
 }
 
 
+let addPersonInfo = {
+    "data": {
+        "generalPeopleInfo": {
+            "size": 1,
+            "distinct": [
+                "Agender",
+                "Bigender",
+                "Female",
+                "Genderfluid",
+                "Genderqueer",
+                "Male",
+                "Non-binary",
+                "Polygender"
+            ]
+        },
+        "createPerson": {
+            "_id": "6166d3941db2c65ddf1bd2b2",
+            "first_name": "Janean"
+        }
+    }
+}
+
+
+let addCarInfo = {
+    "data": {
+        "createCar": {
+            "_id": "6166d3941db2c65ddf1bd2b2",
+    
+        }
+    }
+}
 
 
 
 
-export { mockdata, searchdata, searchForJan, searchForJanFemale }
+
+
+
+
+
+
+export { mockdata, searchdata, searchForJan, searchForJanFemale, addPersonInfo, addCarInfo}
