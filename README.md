@@ -68,3 +68,5 @@ _Scenario 2: Add person and car_
 5. Access ‘Add car’ subpage.
 6. Add a new car for a person named ‘Brynna Branch’ with id: 617c1a45554583c61718d81e
 7. Verify that the newly-added car is listed among the cars in the profile for Brynna Branch.
+
+We used [(Cypress)](https://www.cypress.io/) to conduct automated end-to-end testing. Since relying on the group’s database for testing is bad practice, we generated MOCK data to perform the testing. When we used MOCK data for testing, we learned that Cypress offers useful methods such as _intercept()_ which enables the developer to use MOCK data instead of data from the database. Lastly, Cypress supports functionality for viewing the tests in real time meaning that you can see how the application looks like in when certain DOM-elements are clicked on.
