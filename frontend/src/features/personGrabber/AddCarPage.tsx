@@ -77,7 +77,7 @@ function AddCarPage() {
     <form onSubmit={submitForm} noValidate className="needs-validation" style={{textAlign: "center"}}>
       <h3>Add a new car <span className="label label-default"></span></h3>
       <div className="col-md-12">
-        <input value={car.name} type="text" required pattern="[a-zA-Z0-9]{2,20}" className="form-control mt-3" placeholder="Car model" name="name" onChange={handleChange}/>
+        <input id="nameField" value={car.name} type="text" required pattern="[a-zA-Z0-9]{2,20}" className="form-control mt-3" placeholder="Car model" name="name" onChange={handleChange}/>
       </div>
       <div className="invalid-feedback">Please enter a valid car model</div>
       <div className="col-md-12">

@@ -14,7 +14,7 @@ export const grabberSlice = createSlice({
   initialState,
   reducers: {
     addPerson: (state, action: PayloadAction<string>) => {
-      if (!state.visited.includes(action.payload)) {
+      if (state.visited.indexOf(action.payload) < 0) {
         if (state.visited.length < 12) {
           state.visited.push(action.payload)
         } else {

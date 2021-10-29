@@ -11,7 +11,6 @@ interface PersonProps {
     birthdate: string;
     gender: string;
     _id: string;
-    customPeopleData?: DataInterface;
 }
 
 interface DataInterface {
@@ -101,11 +100,7 @@ function PersonCard(props: PersonProps) {
     const clickHandler = () => {
         if (!isOpen) {
             dispatch(addPerson(props.name))
-            if (props.customPeopleData) {
-                setData(props.customPeopleData)
-            } else {
-                getPersonData()
-            }
+            getPersonData()
             setIsOpen(true)
         }
     }
