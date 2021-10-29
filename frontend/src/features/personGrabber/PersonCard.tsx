@@ -115,7 +115,7 @@ function PersonCard(props: PersonProps) {
             return (
                 <div className="open">
                     <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
-                        <img className="card-img-top" src={getGenderImage()} alt="Card" />
+                        <img className="card-img-top" src={getGenderImage()} alt="" />
                     </Box>
                     <div className="card-body">
                         <h6 className="card-title" style={{ fontSize: "20px" }}>{props.name}</h6>
@@ -151,7 +151,7 @@ function PersonCard(props: PersonProps) {
         } else {
             return (
                 <header className="closed">
-                    <img className="card-img-top" src={getGenderImage()} alt="Card" />
+                    <img className="card-img-top" src={getGenderImage()} alt="" />
                     <div className="card-body">
                         <h1 className="card-title" style={{ fontSize: "15px" }}>{props.name}</h1>
                         <p className="card-text"><b>Age:</b> {getAge(props.birthdate)}</p>
