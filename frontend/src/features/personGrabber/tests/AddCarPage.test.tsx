@@ -1,6 +1,14 @@
 import AddCarPage from '../AddCarPage'
 import { shallow, mount } from "enzyme"
+import React from 'react'
 
+const updateInput = (wrapper: any, instance: any, newValue: any, name:string) => {
+    const input = wrapper.find(instance)
+    input.simulate('change', {
+        target: {value: newValue, name: name}
+    })
+    return wrapper.find(instance)
+}
 
 describe("Testing car creation form", () => {
     test("Renders correctly", () => {
@@ -8,20 +16,13 @@ describe("Testing car creation form", () => {
     })
 
     test("Can input values in fields", () => {
-        const addCarPage = mount(<AddCarPage/>)
-        const inp = addCarPage.find("input")
-
-        inp.first().simulate("focus")
-        inp.first().simulate('change', { target: { value: 'Changed' } });
-        inp.first().simulate('keyDown', {
-            which: 27,
-            target: {
-              blur() {
-                // Needed since <EditableText /> calls target.blur()
-                inp.simulate('blur');
-              },
-            },
-          });
-          expect(inp.get(0).props.value).toBe('Hello');
+        const wrapper = shallow(<AddCarPage/>)
+        const nameInput = updateInput(wrapper, '[name="name"]', "Jack", "name")
+        expect(nameInput.props().value).toBe("Jack")
+        const company = updateInput(wrapper, '[name="company"]', "Volvo", "company")
+        expect(company.props().value).toBe("Volvo")
+        const production_year = updateInput(wrapper, '[name="production_year"]', 1999, "production_year")
+        expect(production_year.props().value).toBe(1999)
+        
     })
 })
