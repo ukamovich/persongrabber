@@ -6,8 +6,6 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
 
-import { useAppDispatch, useAppSelector } from '../../hooks'
-import { setPage } from './grabberSlice'
 import PersonCard from "./PersonCard";
 import OptionsBar from "./OptionsBar"
 import fetchGrabber, { backendURL } from "../../_helpers/fetchGrabber";
@@ -17,7 +15,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 const pageSize = 20
 
-interface dateInterface {
+interface DataInterface {
     _id: string,
     first_name: string,
     last_name: string,
@@ -27,9 +25,6 @@ interface dateInterface {
 
 function PersonCardContainer() {
 
-    const dispatch = useAppDispatch()
-    const page = useAppSelector((state) => state.page)
-
     const [pages, setPages] = useState(10);
     const [sort, setSort] = useState('desc');
     const [search, setSearch] = useState("");
@@ -37,7 +32,7 @@ function PersonCardContainer() {
     const [genders, setGenders] = useState([])
     const [gender, setGender] = useState("All")
     const [currentPage, setCurrentPage] = useState(1);
-    const [data, setData] = useState<dateInterface[]>()
+    const [data, setData] = useState<DataInterface[]>()
 
     /**
      * Handles search requests
@@ -46,7 +41,6 @@ function PersonCardContainer() {
     const handleSearch = (resetPage = false) => {
         if (resetPage) {
             setCurrentPage(1)
-            dispatch(setPage(1))
         }
         let queryBody = {
             query: `
@@ -63,6 +57,8 @@ function PersonCardContainer() {
         }
         fetchGrabber(queryBody, backendURL).then(res => {
             setData(res.data.people);
+        }).catch(err => {
+            console.log(err)
         })
 
         queryBody = {
@@ -76,6 +72,8 @@ function PersonCardContainer() {
         }
         fetchGrabber(queryBody, backendURL).then((res) => {
             setPages(Math.ceil(res.data.generalPeopleInfo.size / pageSize))
+        }).catch(err => {
+            console.log(err)
         })
     }
 
@@ -96,6 +94,8 @@ function PersonCardContainer() {
         }
         fetchGrabber(query, backendURL).then((res) => {
             setGenders(res.data.generalPeopleInfo.distinct)
+        }).catch(err => {
+            alert(err)
         })
         
     }, [])
@@ -103,7 +103,6 @@ function PersonCardContainer() {
     // On selected page change or sort change
     useEffect(() => {
         handleSearch()
-        dispatch(setPage(currentPage))
         window.scrollTo(0,0)
     }, [currentPage, sort])
 

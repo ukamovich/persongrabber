@@ -26,6 +26,8 @@ We have mainly used components from the [MUI-library](https://mui.com/). The lib
 
 When the inline styling were not enough to alter the component the way we wanted, we used ThemeProvider and UseTheme to style the component in a specific way by creating a separate component which we named Themes.tsx.
 
+We have also used bootstrap, a css library with alot of default styling ready to use on basic html components. Both the add person page and the add car page has been styled with bootstrap.
+
 # Universal design
 After reviewing the [guidance for universal design for webpages](https://www.uutilsynet.no/nettsteder/losningsforslag-nettsider/36), we picked and implemented the most relevant and applicable, in our subjective opinion, requirements on our page:
 

@@ -12,7 +12,7 @@ describe('Test a userstory for searching and filtering', () => {
    it('Testing if Dani Blanket exists', () => {
     const keyword = 'Dani'
     cy.intercept("http://localhost:3001/graphql", searchdata)
-    cy.get('#filled-basic').type(`${keyword}{enter}`)
+    cy.get('#filled-basic').type(`${keyword}`)
     cy.get('.MuiButton-root').click()
     cy.contains('Dani Blanket')
 
@@ -22,7 +22,7 @@ describe('Test a userstory for searching and filtering', () => {
     cy.get('#filled-basic').clear()
     const keyword = 'jan'
     cy.intercept("http://localhost:3001/graphql", searchForJan)
-    cy.get('#filled-basic').type(`${keyword}{enter}`)
+    cy.get('#filled-basic').type(`${keyword}`)
     cy.get('.MuiButton-root').click()
     cy.contains('Janean Belton')
     cy.contains('Jan Nam')
@@ -47,7 +47,7 @@ describe('Test a userstory for searching and filtering', () => {
     cy.contains("617bcbaccbf357aee0231677")
    })
 
-   
+
 
 
 
