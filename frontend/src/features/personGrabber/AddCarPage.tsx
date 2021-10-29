@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import fetchGrabber, { backendURL } from "../../_helpers/fetchGrabber";
 
 interface CarInterface {

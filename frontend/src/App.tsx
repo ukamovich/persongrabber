@@ -6,6 +6,7 @@ import PersonCardContainer from './features/personGrabber/PersonCardContainer';
 import AddPersonPage from './features/personGrabber/AddPersonPage';
 import AddCarPage from './features/personGrabber/AddCarPage';
 import Navbar from './features/Navbar';
+import Footer from './features/Footer'
 import { Provider } from 'react-redux';
 import store from './store'
 
@@ -22,6 +23,7 @@ function App() {
             <Route path='/add-car' component={AddCarPage} />
           </Switch>
         </PageWrapper>
+        <Footer/>
       </Router>
     </Provider>
   )
