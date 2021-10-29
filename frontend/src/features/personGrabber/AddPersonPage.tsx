@@ -22,16 +22,6 @@ interface PersonInterface {
   bio: string
 }
 
-function validateForm(person: PersonInterface): boolean {
-  for (let [key, value] of Object.entries(person)) {
-    if (!value) {
-      alert(`${key} cannot be empty!`)
-      return false
-    }
-  }
-  return true
-}
-
 
 function AddPersonPage() {
 
@@ -71,7 +61,7 @@ function AddPersonPage() {
       .forEach(function (form) {
           if (!form.checkValidity()) {
             form.classList.add("was-validated")
-            //event.stopPropagation();
+            event.stopPropagation();
           }
           else {
             console.log(person)
