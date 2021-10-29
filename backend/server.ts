@@ -9,7 +9,18 @@ import mongoose from "mongoose"
 const app = express()
 const port = process.env.PORT || 3001
 
-app.use(cors())
+
+const allowedOrigins = [
+    'http://localhost:3000',
+    'http://it2810-43.idi.ntnu.no'
+];
+
+const options = {
+    origin: allowedOrigins,
+    optionsSuccessStatus: 200
+}
+
+app.use(cors(options))
 
 
 app.use((req, res, next) => {
