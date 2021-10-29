@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState, useEffect } from 'react';
 import fetchGrabber, { backendURL } from "../../_helpers/fetchGrabber";
+import { useAppDispatch } from '../../hooks'
+import { addPerson } from './grabberSlice'
 import {Box} from '@mui/material';
 import './styles/card.css';
 
@@ -9,15 +11,16 @@ interface PersonProps {
     birthdate: string;
     gender: string;
     _id: string;
+    customPeopleData?: DataInterface;
 }
 
 interface DataInterface {
     bio: string;
     email: string;
-    cars: [{
+    cars: {
         name: string;
         price: number;
-    }]
+    }[],
 }
 
 //Source: https://www.codegrepper.com/code-examples/javascript/javascript+get+age+from+date
@@ -34,16 +37,18 @@ function getAge(dateString: string) {
 
 
 
-function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
+function PersonCard(props: PersonProps) {
+
+    const dispatch = useAppDispatch()
 
     const [isHovering, setIsHovering] = useState(false);
     const [isOpen, setIsOpen] = useState(false)
     const [data, setData] = useState<DataInterface>()
 
     const getGenderImage = (): string => {
-        if (gender === "Male") {
+        if (props.gender === "Male") {
             return "https://cdn-icons-png.flaticon.com/512/1536/1536865.png";
-        } else if (gender === "Female") {
+        } else if (props.gender === "Female") {
             return "https://cdn-icons-png.flaticon.com/512/1536/1536867.png";
         }
         else {
@@ -68,7 +73,7 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
         let queryBody = {
             query: `
                 query {
-                    person (search:  [{value: "${_id}", field:"_id"}]) {
+                    person (search:  [{value: "${props._id}", field:"_id"}]) {
                         bio
                         email
                         cars {
@@ -89,7 +94,12 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
         if (isOpen) {
             // setIsOpen(false)
         } else {
-            getPersonData()
+            dispatch(addPerson(props.name))
+            if (props.customPeopleData) {
+                setData(props.customPeopleData)
+            } else {
+                getPersonData()
+            }
             setIsOpen(true)
         }
     }
@@ -103,10 +113,10 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
                         <img className="card-img-top" src={getGenderImage()} alt="Card" />
                     </Box>
                     <div className="card-body">
-                        <h6 className="card-title" style={{ fontSize: "20px" }}>{name}</h6>
-                        <p className="card-text"><b>Age:</b> {getAge(birthdate)}</p>
-                        <p className="card-text"><b>Gender:</b> {gender}</p>
-                        <p><b>Id:</b> {_id}</p>
+                        <h6 className="card-title" style={{ fontSize: "20px" }}>{props.name}</h6>
+                        <p className="card-text"><b>Age:</b> {getAge(props.birthdate)}</p>
+                        <p className="card-text"><b>Gender:</b> {props.gender}</p>
+                        <p><b>Id:</b> {props._id}</p>
                         <p><b>Email:</b> {data && data.email}</p>
                         <p><b>About:</b> {data && data.bio}</p>
                         {data && data.cars.length > 0 &&
@@ -138,9 +148,9 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
                 <header className="closed">
                     <img className="card-img-top" src={getGenderImage()} alt="Card" />
                     <div className="card-body">
-                        <h1 className="card-title" style={{ fontSize: "15px" }}>{name}</h1>
-                        <p className="card-text">Age: {getAge(birthdate)}</p>
-                        <p className="card-text">Gender: {gender}</p>
+                        <h1 className="card-title" style={{ fontSize: "15px" }}>{props.name}</h1>
+                        <p className="card-text"><b>Age:</b> {getAge(props.birthdate)}</p>
+                        <p className="card-text"><b>Gender:</b> {props.gender}</p>
                     </div>
                 </header>
             )
@@ -160,4 +170,5 @@ function PersonCard({ _id, name, birthdate, gender }: PersonProps) {
     );
 }
 
+export {getAge}
 export default PersonCard;
