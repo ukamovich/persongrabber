@@ -1,8 +1,7 @@
-// import Person, { PersonInterface } from "../../models/person"
-// import Car, { CarInterface } from "../../models/car"
 import peopleResolver from "./people"
 import carResolver from "./cars"
 
+// Combiner object for resolvers
 var resolvers = {
     ...peopleResolver,
     ...carResolver

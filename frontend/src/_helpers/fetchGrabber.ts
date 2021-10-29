@@ -1,3 +1,10 @@
+/**
+ * Helper function to perform fetch requests with graphql easily.
+ * Throws an error if non-positive response.
+ * @param queryBody graphql query / mutation
+ * @param url pointer to server which handles request
+ * @returns a promise of a json response
+ */
 async function fetchGrabber(queryBody: {query: String} , url: string) {
     let result = await fetch(url, {
         method: "POST",
@@ -16,6 +23,7 @@ async function fetchGrabber(queryBody: {query: String} , url: string) {
     return result.json()
 }
 
+// Constants
 const port = 3001 || process.env.REACT_APP_BACKEND_PORT
 const backendURL = `http://localhost:${port}/graphql`
 

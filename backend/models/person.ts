@@ -14,7 +14,7 @@ interface PersonInterface extends Document{
     _doc?: any
 }
 
-
+// Person schema for db
 const personSchema: Schema = new Schema({
     first_name: {
         type: String,

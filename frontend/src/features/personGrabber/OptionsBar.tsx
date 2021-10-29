@@ -28,6 +28,11 @@ interface OptionProps {
   sort: string;
 }
 
+/**
+ * Component to hold sorting, filtering and serting mekanisms
+ * @param props handlers and states from parent
+ * @returns 
+ */
 function OptionsBar(props: OptionProps) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));

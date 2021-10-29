@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import grabberReducer from './features/personGrabber/grabberSlice'
-// ...
 
 const store = configureStore({
   reducer: grabberReducer,

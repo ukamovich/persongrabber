@@ -14,6 +14,7 @@ interface CarInterface extends Document{
     _doc?: any
 }
 
+// Car schema for db
 const carSchema = new Schema({
     name: {
         type: String,

@@ -9,6 +9,12 @@ interface FieldInput {
 
 const pageSize: number = 20
 
+/**
+ * Takes a list of search-field value pairs, which are translated to 
+ * object used for mongoose find
+ * @param search What to search on and which field to apply it to
+ * @returns a search object to be used in mongoose find
+ */
 function getSearchQuery(search: FieldInput[]) {
     let result: {[k:string]: any} = {}
     if (!search) {
@@ -39,6 +45,11 @@ function getSearchQuery(search: FieldInput[]) {
     return result
 }
 
+/**
+ * Takes a field and value to create an object used for mongoose sort.
+ * @param sort field and value to sort on
+ * @returns object to sort on
+ */
 function getSortQuery(sort: FieldInput) {
     let result = {}
     if (!sort) {
@@ -69,7 +80,7 @@ function getSortQuery(sort: FieldInput) {
     return result
 }
 
-
+// Resolvers for people / person queries / mutations
 let resolver = {
     people: async (args: {page: number, search: FieldInput[], sort: FieldInput}) => {
         try {
