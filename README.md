@@ -19,7 +19,7 @@ In turn, Redux is inspired by the concepts of functional programming, frequently
 
 In Redux, the whole global state of an app is stored in an object tree inside a single store. In order to change the state tree, an action ( an object that describes “what happened”) must be created and dispatched to the store. A special function - reducer - returns a new state, based on the old state and the action.
 
-**!!! Describe Redux in our app!!!**
+We could not really find a useful application for the use of redux, but ended up settling with have a "clicked" history. What this means is that each time a person is viewed (their card is clicked), they are added to the visited redux state. This state is used to display a list of "clicked" people in the footer. We chose to put this list in the footer because it demonstrates how redux can be useful when passing data around in the hierarchy.
 
 # UI components and libraries
 We have mainly used components from the [MUI-library](https://mui.com/). The library has a wide variety of components which are easy to implement in the design and that’s why we sticked with this library throughout the project. Another great advantage of the MUI-components is that they offer inline styling which makes it more convenient to change the component regarding mediaQueries or just CSS. As an example, we were able to reduce the amount of div-tags due to the Box-component since we can perform CSS inline instead of creating a separate CSS-file for styling the div-tag.
