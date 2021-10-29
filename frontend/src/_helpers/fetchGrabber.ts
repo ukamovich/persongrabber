@@ -13,9 +13,7 @@ async function fetchGrabber(queryBody: {query: String} , url: string) {
             "Content-Type": "application/json"
         }
     })
-
     if (result.status !== 200 && result.status !== 201) {
-        console.log("Reached here!")
         console.log(result)
         throw new Error("Query illegal or could not connect to database!")
     }
