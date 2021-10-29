@@ -1,5 +1,14 @@
-# About the webpage
-_PersonGrapper_ is an application that diplays information about people stored in a database. Each person has the following attributes: Forname, lastname, gender, age, about and cars. The main functionality of the application is embedded in the search-bar which includes different tools to perform filtering on the search. To perform a filtering, the user can choose to filter on Lastname, Forname or Gender. The portrait of the person reflects wheter the person is male, female or neither. A button that sorts the resulting persons in descending or ascending order according to age has also been included diplayed as an upward or downward arrow. Lastly, _PersonGrapper_ has functionality for generating new persons or cars and add this information to the database. 
+# Project Overview
+_PersonGrabber_ is an application that diplays information about people stored in a database. Each person has the following attributes: Forname, lastname, gender, age, about and cars. The main functionality of the application is embedded in the search-bar which includes different tools to perform filtering on the search. To perform a filtering, the user can choose to filter on Lastname, Forname or Gender. The portrait of the person reflects wheter the person is male, female or neither. A button that sorts the resulting persons in descending or ascending order according to age has also been included diplayed as an upward or downward arrow. Lastly, _PersonGrapper_ has functionality for generating new persons or cars and add this information to the database. 
+
+
+Hosted here (need to be connected to NTNU network): 
+
+## How to run it
+1. Run `npm install`in the both folders `backend` and `frontend`
+
+2. Run `npm start`in the both folders `backend` and `frontend`
+
 
 
 # GraphQL & API
@@ -40,10 +49,10 @@ Firstly, we have highlighted the text on the elements that takes the user to the
 [_Clickable elements(Navigation)_](https://www.uutilsynet.no/regelverk/klikkeflate-navigasjon/211)
 This requirement is about users that lack precision ability. Our solution takes this matter into account since we are using relatively large-scaled images on both small- and large-scale devices which the user can click on to view a person in detail. Also, the picture of the person is being zoomed in a little bit with a border around it, making it even more distinct and easier to click on for the user. In addition, we have kept the tools regarding searching relatively large so that this won’t be a challenge for users that lack precision ability.
 
-**!!! Additional; discuss the size of the pagination buttons since they are possible too small for users that lacks precision ability.!!!**
-
 
 # Testing
+
+**Unit testing**
 
 **End-to-End Testing**
 
@@ -69,4 +78,16 @@ _Scenario 2: Add person and car_
 6. Add a new car for a person named ‘Brynna Branch’ with id: 617c1a45554583c61718d81e
 7. Verify that the newly-added car is listed among the cars in the profile for Brynna Branch.
 
-We used [(Cypress)](https://www.cypress.io/) to conduct automated end-to-end testing. Since relying on the group’s database for testing is bad practice, we generated MOCK data to perform the testing. When we used MOCK data for testing, we learned that Cypress offers useful methods such as _intercept()_ which enables the developer to use MOCK data instead of data from the database. Lastly, Cypress supports functionality for viewing the tests in real time meaning that you can see how the application looks like in when certain DOM-elements are clicked on.
+We used [Cypress](https://www.cypress.io/) to conduct automated end-to-end testing. Since relying on the group’s database for testing is bad practice, we generated MOCK data to perform the testing. When we used MOCK data for testing, we learned that Cypress offers useful methods such as _intercept()_ which enables the developer to use MOCK data instead of data from the database. Lastly, Cypress supports functionality for viewing the tests in real time meaning that you can see how the application looks like in when certain DOM-elements are clicked on.
+
+**How to experience Cypress in live mode**
+1. Make sure that both Backend and Frontend are running
+
+2. Make sure to be in the folder `frontend`
+
+3. Run `npx cypress open`
+
+
+
+
+
