@@ -16,22 +16,22 @@ const allowedOrigins = [
 ];
 
 const options = {
-    origin: allowedOrigins,
+    origin: "http://localhost:3000",
     optionsSuccessStatus: 200
 }
 
 app.use(cors(options))
 
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    if (req.method === 'OPTIONS') {
-      return res.sendStatus(200);
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     if (req.method === 'OPTIONS') {
+//       return res.sendStatus(200);
+//     }
+//     next();
+// });
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
