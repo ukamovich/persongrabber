@@ -64,7 +64,7 @@ function PersonCardContainer() {
         queryBody = {
             query: `
                 query {
-                    generalPeopleInfo(search: [{value: "${search}", field:"${searchOption}"}]) {
+                    generalPeopleInfo(search: [{value: "${search}", field:"${searchOption}"}, {value: "${gender}", field: "${gender === "All" ? "" : "gender"}"}]) {
                         size
                     }
                 }

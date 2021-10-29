@@ -1,4 +1,5 @@
-import { AppBar, Link, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography } from '@mui/material';
+import { Link } from "react-router-dom"
 import { navbarTheme } from './personGrabber/styles/Themes';
 import React from 'react';
 
@@ -34,31 +35,10 @@ const Navbar = () => {
 						}}
 						
 					>
-						<Link 
-							href="/project3"
-							color="inherit" 
-							underline="none"
-							variant="h4"
-							sx= {{
-								fontWeight: "bold"
-							}}
-						>
-							Person grabber
-						</Link>
-						<Link 
-							href="/project3/add-person"
-							color="inherit" 
-							underline="none"
-						>
-							Add person
-						</Link>
-						<Link 
-							href="/project3/add-car"
-							color="inherit" 
-							underline="none"
-						>
-							Add car
-						</Link>
+						<Link to="/" style={{ textDecoration: 'none', color: "white", fontWeight: "bold", fontSize: "24px" }}>Person grabber</Link>
+						<Link to="/add-person" style={{ textDecoration: 'none', color: "white", fontSize: "20px"}}>Add person</Link>
+						<Link to="/add-car" style={{ textDecoration: 'none', color: "white", fontSize: "20px"}}>Add car</Link>
+
 					</Typography>
 
 				</Toolbar>

@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import PageWrapper from './features/PageWrapper';
 import PersonCardContainer from './features/personGrabber/PersonCardContainer';
@@ -14,17 +14,17 @@ function App() {
 
   return (
     <Provider store={store}>
-      <Router>
+      <HashRouter basename="/">
         <Navbar />
         <PageWrapper>
           <Switch>
-            <Route path='/project3' exact component={PersonCardContainer} />
+            <Route path='/' exact component={PersonCardContainer} />
             <Route path='/add-person' component={AddPersonPage} />
             <Route path='/add-car' component={AddCarPage} />
           </Switch>
         </PageWrapper>
         <Footer/>
-      </Router>
+      </HashRouter>
     </Provider>
   )
 }

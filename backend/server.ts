@@ -9,29 +9,7 @@ import mongoose from "mongoose"
 const app = express()
 const port = process.env.PORT || 3001
 
-
-const allowedOrigins = [
-    'http://localhost:3000',
-    'http://it2810-43.idi.ntnu.no'
-];
-
-const options = {
-    origin: "http://localhost:3000",
-    optionsSuccessStatus: 200
-}
-
-app.use(cors(options))
-
-
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//     if (req.method === 'OPTIONS') {
-//       return res.sendStatus(200);
-//     }
-//     next();
-// });
+app.use(cors())
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,

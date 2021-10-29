@@ -153,7 +153,7 @@ function PersonCard(props: PersonProps) {
                 <header className="closed">
                     <img className="card-img-top" src={getGenderImage()} alt="" />
                     <div className="card-body">
-                        <h1 className="card-title" style={{ fontSize: "15px" }}>{props.name}</h1>
+                        <h1 className="card-title" style={{ fontSize: "20px" }}>{props.name}</h1>
                         <p className="card-text"><b>Age:</b> {getAge(props.birthdate)}</p>
                         <p className="card-text"><b>Gender:</b> {props.gender}</p>
                     </div>

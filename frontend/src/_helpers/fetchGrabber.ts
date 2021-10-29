@@ -9,6 +9,7 @@ async function fetchGrabber(queryBody: {query: String} , url: string) {
     let result = await fetch(url, {
         method: "POST",
         body: JSON.stringify(queryBody),
+        mode: "cors",
         headers: {
             "Content-Type": "application/json"
         }
