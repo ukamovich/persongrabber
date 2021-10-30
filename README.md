@@ -6,9 +6,9 @@ Hosted here (need to be connected to NTNU network):
 http://it2810-43.idi.ntnu.no/project3/#/
 
 ## How to run it
-1. Run `npm install`in the both folders `backend` and `frontend`
+1. Run `npm install`in both `backend` and `frontend` folders
 
-2. Run `npm start`in the both folders `backend` and `frontend`
+2. Run `npm start`in both `backend` and `frontend` folders
 
 
 
@@ -41,13 +41,13 @@ We have also used bootstrap, a css library with alot of default styling ready to
 # Universal design
 After reviewing the [guidance for universal design for webpages](https://www.uutilsynet.no/nettsteder/losningsforslag-nettsider/36), we picked and implemented the most relevant and applicable, in our subjective opinion, requirements on our page:
 
-[_Pictures and graphics_](https://www.uutilsynet.no/regelverk/bilder-og-grafikk/205)
+[_Pictures and graphics_](https://www.uutilsynet.no/regelverk/bilder-og-grafikk/205)<br>
 Profile pictures play a significant part on our single-page application. The pictures we use are just decorative and contribute to the graphical design of the page. Thus, following the requirement for [decorative pictures](https://www.uutilsynet.no/regelverk/bilder-og-grafikk/205), we keep the alt-attribute empty. Also, we complement each profile picture with a name, age, and gender, which provides a descriptive identification of each person.
 
-[_Colors_](https://www.uutilsynet.no/regelverk/bruk-av-farger/206) and [_contrast_](https://www.uutilsynet.no/wcag-standarden/kontrast/48)
+[_Colors_](https://www.uutilsynet.no/regelverk/bruk-av-farger/206) and [_contrast_](https://www.uutilsynet.no/wcag-standarden/kontrast/48)<br>
 Firstly, we have highlighted the text on the elements that takes the user to the three pages making up the application. Secondly, we have tried to avoid using color combination that is challenging for users that are color blind like green and red. Even though the navbar is green and the color of the profile picture on some persons are red, they are not placed directly together so it won’t be an issue to separate the two. Lastly, the layout is mainly built on the combination of dark and light colors which makes it easier to distinguish content on the page.
 
-[_Clickable elements(Navigation)_](https://www.uutilsynet.no/regelverk/klikkeflate-navigasjon/211)
+[_Clickable elements(Navigation)_](https://www.uutilsynet.no/regelverk/klikkeflate-navigasjon/211)<br>
 This requirement is about users that lack precision ability. Our solution takes this matter into account since we are using relatively large-scaled images on both small- and large-scale devices which the user can click on to view a person in detail. Also, the picture of the person is being zoomed in a little bit with a border around it, making it even more distinct and easier to click on for the user. In addition, we have kept the tools regarding searching relatively large so that this won’t be a challenge for users that lack precision ability.
 
 
@@ -55,12 +55,15 @@ This requirement is about users that lack precision ability. Our solution takes 
 
 **Unit testing**
 
-**End-to-End Testing**
 
-The objective of end-to-end testing is to test our app for a user’s point of view. The app is treated as a complete black box and the behaviour of the app’s flow is the result of user actions. We aim at testing Person Grabber using a prolonged sequence of step-by-step actions to cover the app’s flow ”from start to end”. Since we want a user to test our SPA, s/he will be manually executing tests using scenarios by rendering Person Grabber in a browser (e.g., Chrome or Firefox).
 
-_Scenario 1: Search, sort, and filter_
-1. Type appplication URL into the address bar to launch the Person Grabber page.
+**End-to-end testing**
+
+The objective of end-to-end testing is to test our app for a user’s point of view. The app is treated as a complete black box and the behaviour of the app’s flow is the result of user actions. We aim at testing _PersonGrabber_ using a prolonged sequence of step-by-step actions to cover the app’s flow ”from start to end”. Since we want a user to test our SPA, s/he will be manually executing tests using scenarios by rendering _PersonGrabber_ in a browser (e.g., Chrome or Firefox).
+
+<details>
+<summary markdown="span">_Scenario 1: Search, sort, and filter_</summary>
+1. Type appplication URL into the address bar to launch the _PersonGrabber_ page.
 2. Examine default sort setup (default: ascending order by age).
 3. Click on any person’s card. Check the person's info is displayed.
 4. Click on the arrow icon next to the ‘Search’ button to sort the list of persons.
@@ -69,20 +72,23 @@ _Scenario 1: Search, sort, and filter_
 7. Search for a person(s) that contains a ‘ben’ word sequence in their last name and is a Male.
 8. Search for a person with person id: 617c14ecbfc0b0157478b923
 9. Search for all persons who are Bigender.
+</details>
 
-_Scenario 2: Add person and car_
-1. Type appplication URL into the address bar to launch the Person Grabber page.
+<details>
+<summary markdown="span">_Scenario 2: Add person and car_<summary>
+1. Type appplication URL into the address bar to launch the _PersonGrabber_ page.
 2. Access ‘Add person’ subpage.
 3. Add a new person.
 4. Verify that the newly-added person can be found.
 5. Access ‘Add car’ subpage.
 6. Add a new car for a person named ‘Brynna Branch’ with id: 617c1a45554583c61718d81e
 7. Verify that the newly-added car is listed among the cars in the profile for Brynna Branch.
+</details>
 
 We used [Cypress](https://www.cypress.io/) to conduct automated end-to-end testing. Since relying on the group’s database for testing is bad practice, we generated MOCK data to perform the testing. When we used MOCK data for testing, we learned that Cypress offers useful methods such as _intercept()_ which enables the developer to use MOCK data instead of data from the database. Lastly, Cypress supports functionality for viewing the tests in real time meaning that you can see how the application looks like in when certain DOM-elements are clicked on.
 
 **How to experience Cypress in live mode**
-1. Make sure that both Backend and Frontend are running
+1. Make sure that both _backend_ and _frontend_ are running
 
 2. Make sure to be in the folder `frontend`
 
