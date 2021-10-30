@@ -1,8 +1,9 @@
 # Project Overview
-_PersonGrabber_ is an application that diplays information about people stored in a database. Each person has the following attributes: Forname, lastname, gender, age, about and cars. The main functionality of the application is embedded in the search-bar which includes different tools to perform filtering on the search. To perform a filtering, the user can choose to filter on Lastname, Forname or Gender. The portrait of the person reflects wheter the person is male, female or neither. A button that sorts the resulting persons in descending or ascending order according to age has also been included diplayed as an upward or downward arrow. Lastly, _PersonGrapper_ has functionality for generating new persons or cars and add this information to the database. 
+_PersonGrabber_ is an application that diplays information about people stored in a database. Each person has the following attributes: Forname, lastname, gender, age, about and cars. The main functionality of the application is embedded in the search-bar which includes different tools to perform filtering on the search. To perform a filtering, the user can choose to filter on Lastname, Forname or Gender. The portrait of the person reflects wheter the person is male, female or neither. A button that sorts the resulting persons in descending or ascending order according to age has also been included diplayed as an upward or downward arrow. Lastly, _PersonGrabber_ has functionality for generating new persons or cars and add this information to the database. 
 
 
 Hosted here (need to be connected to NTNU network): 
+http://it2810-43.idi.ntnu.no/project3/#/
 
 ## How to run it
 1. Run `npm install`in the both folders `backend` and `frontend`
