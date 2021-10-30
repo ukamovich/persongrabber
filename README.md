@@ -55,14 +55,15 @@ This requirement is about users that lack precision ability. Our solution takes 
 
 **Unit testing**
 
+We used [Enzyme](https://enzymejs.github.io/enzyme/) (JavaScript Testing utility for React) for testing our React components separately. The utility allows to 
+render a component, find the necessary elements, and interact with those elements. Tests for navbar, 'Add a new car', and 'Add a new person' can be found [here](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-43/persongrabber/-/tree/master/frontend/src/features/personGrabber/tests).
 
 
 **End-to-end testing**
 
 The objective of end-to-end testing is to test our app for a user’s point of view. The app is treated as a complete black box and the behaviour of the app’s flow is the result of user actions. We aim at testing _PersonGrabber_ using a prolonged sequence of step-by-step actions to cover the app’s flow ”from start to end”. Since we want a user to test our SPA, s/he will be manually executing tests using scenarios by rendering _PersonGrabber_ in a browser (e.g., Chrome or Firefox).
 
-<details>
-<summary markdown="span">_Scenario 1: Search, sort, and filter_</summary>
+_Scenario 1: Search, sort, and filter_
 1. Type appplication URL into the address bar to launch the _PersonGrabber_ page.
 2. Examine default sort setup (default: ascending order by age).
 3. Click on any person’s card. Check the person's info is displayed.
@@ -70,12 +71,11 @@ The objective of end-to-end testing is to test our app for a user’s point of v
 5. Search for a person(s) that contains a ‘jan’ word sequence in their first name.
 6. Search for a person(s) that contains a ‘ben’ word sequence in their last name.
 7. Search for a person(s) that contains a ‘ben’ word sequence in their last name and is a Male.
-8. Search for a person with person id: 617c14ecbfc0b0157478b923
+8. Search for a person with person id: 617c1a45554583c61718d7cc
 9. Search for all persons who are Bigender.
-</details>
 
-<details>
-<summary markdown="span">_Scenario 2: Add person and car_<summary>
+
+_Scenario 2: Add person and car_
 1. Type appplication URL into the address bar to launch the _PersonGrabber_ page.
 2. Access ‘Add person’ subpage.
 3. Add a new person.
@@ -83,9 +83,8 @@ The objective of end-to-end testing is to test our app for a user’s point of v
 5. Access ‘Add car’ subpage.
 6. Add a new car for a person named ‘Brynna Branch’ with id: 617c1a45554583c61718d81e
 7. Verify that the newly-added car is listed among the cars in the profile for Brynna Branch.
-</details>
 
-We used [Cypress](https://www.cypress.io/) to conduct automated end-to-end testing. Since relying on the group’s database for testing is bad practice, we generated MOCK data to perform the testing. When we used MOCK data for testing, we learned that Cypress offers useful methods such as _intercept()_ which enables the developer to use MOCK data instead of data from the database. Lastly, Cypress supports functionality for viewing the tests in real time meaning that you can see how the application looks like in when certain DOM-elements are clicked on.
+We used [Cypress](https://www.cypress.io/) to conduct automated end-to-end testing. Since relying on the group’s database for testing is bad practice, we generated MOCK data to perform the testing. When we used MOCK data for testing, we learned that Cypress offers useful methods such as _intercept()_ which enables the developer to use MOCK data instead of data from the database. Lastly, Cypress supports functionality for viewing the tests in real time, allowing to see how the application looks like when certain DOM-elements are clicked on. Tests can be found [here](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-43/persongrabber/-/tree/master/frontend/cypress/integration/end-to-end). 
 
 **How to experience Cypress in live mode**
 1. Make sure that both _backend_ and _frontend_ are running
