@@ -58,6 +58,11 @@ This requirement is about users that lack precision ability. Our solution takes 
 We used [Enzyme](https://enzymejs.github.io/enzyme/) (JavaScript Testing utility for React) for testing our React components separately. The utility allows to 
 render a component, find the necessary elements, and interact with those elements. Tests for navbar, 'Add a new car', and 'Add a new person' can be found [here](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-43/persongrabber/-/tree/master/frontend/src/features/personGrabber/tests).
 
+**How to run tests**
+1. Make sure to be in the folder `frontend`
+
+2. Run `npm test`
+
 
 **End-to-end testing**
 
