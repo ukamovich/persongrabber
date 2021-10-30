@@ -1,4 +1,3 @@
-import { argsToArgsConfig } from "graphql/type/definition"
 import Person, { PersonInterface } from "../../models/person"
 import { personTransformer } from "../transformers"
 

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import fetchGrabber from "../../_helpers/fetchGrabber";
-
-const port = 3001 || process.env.REACT_APP_BACKEND_PORT
-const backendURL = `http://localhost:${port}/graphql`
+import fetchGrabber, { backendURL } from "../../_helpers/fetchGrabber";
 
 const initialPerson = {
   first_name: "",
