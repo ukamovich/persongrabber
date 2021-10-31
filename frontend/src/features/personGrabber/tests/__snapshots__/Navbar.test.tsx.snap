@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar renders properly 1`] = `
+<header
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-1nq45q-MuiPaper-root-MuiAppBar-root"
+>
+  <div
+    className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root"
+  >
+    <div
+      className="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-e2l5zf-MuiTypography-root"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "white",
+            "fontSize": "24px",
+            "fontWeight": "bold",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Person grabber
+      </a>
+      <a
+        href="/add-person"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "white",
+            "fontSize": "20px",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Add person
+      </a>
+      <a
+        href="/add-car"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "white",
+            "fontSize": "20px",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Add car
+      </a>
+    </div>
+  </div>
+</header>
+`;

@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add person page renders properly 1`] = `
+<form
+  className="needs-validation"
+  noValidate={true}
+  onSubmit={[Function]}
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <h3>
+    Add a new person 
+    <span
+      className="label label-default"
+    />
+  </h3>
+  <div
+    className="col-md-12"
+  >
+    <input
+      className="form-control mt-3"
+      name="first_name"
+      onChange={[Function]}
+      pattern="[a-zA-ZæøåÆØÅöÖÄäëË]{2,20}"
+      placeholder="First Name"
+      required={true}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please enter a valid first name
+  </div>
+  <div
+    className="col-md-12"
+  >
+    <input
+      className="form-control mt-3"
+      name="last_name"
+      onChange={[Function]}
+      pattern="[a-zA-ZæøåÆØÅöÖÄäëË]{2,20}"
+      placeholder="Last Name"
+      required={true}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please enter a valid last name
+  </div>
+  <div
+    className="col-md-12"
+  >
+    <input
+      className="form-control mt-3"
+      name="email"
+      onChange={[Function]}
+      pattern="^[^\\\\s@]+@[^\\\\s@]+\\\\.[^\\\\s@]+$"
+      placeholder="Email adress"
+      required={true}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please enter a valid email
+  </div>
+  <div
+    className="col-md-12"
+  >
+    <input
+      className="form-control mt-3"
+      max="2021-10-31"
+      name="birthdate"
+      onChange={[Function]}
+      placeholder="Date of birth"
+      required={true}
+      type="date"
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please enter a valid date
+  </div>
+  <div
+    className="form-group"
+  >
+    <select
+      className="form-select mt-3"
+      name="gender"
+      onChange={[Function]}
+      value="Male"
+    >
+      <option
+        disabled={true}
+        value=""
+      >
+        Gender
+      </option>
+      <option
+        value="Male"
+      >
+        Male
+      </option>
+      <option
+        value="Female"
+      >
+        Female
+      </option>
+    </select>
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please select a gender
+  </div>
+  <div
+    className="col-md-12"
+  >
+    <textarea
+      className="form-control mt-3"
+      name="bio"
+      onChange={[Function]}
+      placeholder="Biography"
+      required={true}
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Bio cant be empty
+  </div>
+  <button
+    className="btn btn-primary mt-3 mx-3"
+    id="submit"
+    type="submit"
+  >
+    Add Person
+  </button>
+  
+</form>
+`;

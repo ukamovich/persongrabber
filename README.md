@@ -53,15 +53,19 @@ This requirement is about users that lack precision ability. Our solution takes 
 
 # Testing
 
+**How to run tests**
+1. Make sure to be in the folder `frontend`
+
+2. Run `npm test`
+
+
 **Unit testing**
 
 We used [Enzyme](https://enzymejs.github.io/enzyme/) (JavaScript Testing utility for React) for testing our React components separately. The utility allows to 
 render a component, find the necessary elements, and interact with those elements. Tests for navbar, 'Add a new car', and 'Add a new person' can be found [here](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-43/persongrabber/-/tree/master/frontend/src/features/personGrabber/tests).
 
-**How to run tests**
-1. Make sure to be in the folder `frontend`
-
-2. Run `npm test`
+**Snapshot testing**
+We did snapshot testing using [Jest](https://jestjs.io/blog/2016/07/27/jest-14) to render UI components (Footer, Header, AddCarPage, AddPersonPage). A snapshot test takes a screenshot and then compares a recorded screenshot with changes made to the respective component. There are two possible outcomes of such comparison: the change is unexpected; or the screenshot can be upgraded to the newest version of the UI component.
 
 
 **End-to-end testing**
