@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add car page renders properly 1`] = `
+<form
+  className="needs-validation"
+  noValidate={true}
+  onSubmit={[Function]}
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <h3>
+    Add a new car 
+    <span
+      className="label label-default"
+    />
+  </h3>
+  <div
+    className="col-md-12"
+  >
+    <input
+      className="form-control mt-3"
+      id="nameField"
+      name="name"
+      onChange={[Function]}
+      pattern="[a-zA-Z0-9]{2,20}"
+      placeholder="Car model"
+      required={true}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please enter a valid car model
+  </div>
+  <div
+    className="col-md-12"
+  >
+    <input
+      className="form-control mt-3"
+      name="company"
+      onChange={[Function]}
+      pattern="[a-zA-Z0-9]{2,20}"
+      placeholder="Manufactorer"
+      required={true}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please pick a car manufactorer
+  </div>
+  <div
+    className="col-md-12"
+  >
+    <input
+      className="form-control mt-3"
+      max="2022"
+      min="1900"
+      name="production_year"
+      onChange={[Function]}
+      pattern="[0-9{4}]"
+      placeholder="Production year"
+      required={true}
+      type="number"
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Production year on form YYYY
+  </div>
+  <div
+    className="col-md-12"
+  >
+    <input
+      className="form-control mt-3"
+      min="0"
+      name="price"
+      onChange={[Function]}
+      placeholder="Price"
+      required={true}
+      type="number"
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Enter a valid price
+  </div>
+  <div
+    className="col-md-12"
+  >
+    <input
+      className="form-control mt-3"
+      name="owner"
+      onChange={[Function]}
+      placeholder="Owner ID"
+      required={true}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Enter an owner id
+  </div>
+  <button
+    className="btn btn-primary mt-3 mx-3"
+    id="submit"
+    type="submit"
+  >
+    Add car
+  </button>
+</form>
+`;
