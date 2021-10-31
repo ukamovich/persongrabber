@@ -92,11 +92,13 @@ _Scenario 2: Add person and car_
 We used [Cypress](https://www.cypress.io/) to conduct automated end-to-end testing. Since relying on the group’s database for testing is bad practice, we generated MOCK data to perform the testing. When we used MOCK data for testing, we learned that Cypress offers useful methods such as _intercept()_ which enables the developer to use MOCK data instead of data from the database. Lastly, Cypress supports functionality for viewing the tests in real time, allowing to see how the application looks like when certain DOM-elements are clicked on. Tests can be found [here](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-43/persongrabber/-/tree/master/frontend/cypress/integration/end-to-end). 
 
 **How to experience Cypress in live mode**
-1. Make sure that both _backend_ and _frontend_ are running
+1. Make sure that if you have a .env file in the frontend, REACT_APP_BACKEND_PORT=3001 and REACT_APP_BACKEND_URL=http://localhost
 
-2. Make sure to be in the folder `frontend`
+2. Make sure that both _backend_ and _frontend_ are running
 
-3. Run `npx cypress open`
+3. Make sure to be in the folder `frontend`
+
+4. Run `npx cypress open`
 
 
 
