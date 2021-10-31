@@ -4,10 +4,15 @@ import {addCarInfo} from './mockdata'
 describe('Test a userstory for adding a car', () => {
     before("Visits the URL before the test",() => {
       cy.intercept("http://localhost:3001/graphql", addCarInfo)
-      cy.visit('http://localhost:3000/add-car')
+      cy.visit('http://localhost:3000/project3#/')
+    })
+
+    it("Access the add new car site", () => {
+      cy.get('[href="#/add-car"]').click()
     })
 
     it('Test for adding a new car"', () => {
+        cy.intercept("http://localhost:3001/graphql", addCarInfo)
         const name = "Azera"
         const company = "Hyundai"
         const prodyear = 2009

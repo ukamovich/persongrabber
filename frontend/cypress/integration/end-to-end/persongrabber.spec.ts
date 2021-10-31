@@ -5,7 +5,7 @@ import { mockdata, searchdata, searchForJan, searchForJanFemale } from "./mockda
 describe('Test a userstory for searching and filtering', () => {
   before("Visits the URL for each test",() => {
     cy.intercept("http://localhost:3001/graphql", mockdata)
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/project3#/')
   })
 
 

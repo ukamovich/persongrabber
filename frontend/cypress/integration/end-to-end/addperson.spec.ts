@@ -4,10 +4,15 @@ import {addPersonInfo} from './mockdata'
 describe('Test a userstory for adding a person', () => {
     before("Visits the URL before the test",() => {
       cy.intercept("http://localhost:3001/graphql", addPersonInfo)
-      cy.visit('http://localhost:3000/add-person')
+      cy.visit('http://localhost:3000/project3#/')
+    })
+
+    it("Access add new person page", () => {
+      cy.get('[href="#/add-person"]').click()
     })
 
     it('Test for adding a new person"', () => {
+        cy.intercept("http://localhost:3001/graphql", addPersonInfo)
         const fname = "Janean"
         const lname = "Belton"
         const email = "jbeltonq6@ezinearticles.com"
